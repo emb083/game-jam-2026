@@ -1,105 +1,104 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
+
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenuPanel;
-    [SerializeField] private GameObject controlsPanel;
-    [SerializeField] private GameObject mainMenuPanel;
+    [Header("Screens")]
+    [SerializeField] private CanvasGroup pauseMenuScreen;
+    [SerializeField] private CanvasGroup controlsScreen;
+    [SerializeField] private CanvasGroup mainMenuScreen;
+    [SerializeField] private CanvasGroup gameplayScreen;
 
-    [SerializeField] private GameObject gameplayRoot;
-    [SerializeField] private GameObject winPanel;
-    [SerializeField] private GameObject losePanel;
+    [Header("Buttons")]
+    [SerializeField] private Button openPauseButton;
+    [SerializeField] private Button resumeButton;
+    [SerializeField] private Button controlButton;
+    [SerializeField] private Button mainMenuButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Update()
     {
-        if (mainMenuPanel != null && mainMenuPanel.activeSelf)
+        if (openPauseButton != null)
         {
-            ResumeGame();
-        }
-        else
-        {
-            OpenPauseMenu();
+            openPauseButton.onClick.AddListener(OpenPauseMenu);
         }
 
-        if (winPanel != null && winPanel.activeSelf)
-        {
-            return;
+        if (resumeButton != null)
+        { 
+            resumeButton.onClick.AddListener(ResumeGame);
         }
 
-        if (losePanel != null && losePanel.activeSelf)
+        if (controlButton != null)
         {
-            return;
+            controlButton.onClick.AddListener(OpenControls);
         }
 
-        if (controlsPanel != null && controlsPanel.activeSelf)
+        if (mainMenuButton != null)
         {
-            return;
+            mainMenuButton.onClick.AddListener(ReturnToMainMenu);
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (pauseMenuPanel != null && pauseMenuPanel.activeSelf)
-            {
-                pauseMenuPanel.SetActive(true);
-            }
-            Time.timeScale = 0f;
-        }
-
     }
+            
+    private void ShowScreen(CanvasGroup screen)
+    {
+        if (screen == null)
+        {
+            return;
+        }
+        screen.alpha = 1f;
+        screen.interactable = true;
+        screen.blocksRaycasts = true;
+    }
+
+    public void HideScreen(CanvasGroup screen)
+    {
+        if (screen == null)
+        {
+            return;
+        }
+        screen.alpha = 0f;
+        screen.interactable = false;
+        screen.blocksRaycasts = false;
+    } 
 
     public void OpenPauseMenu()
     {
-        if (pauseMenuPanel != null)
+        if (pauseMenuScreen != null)
         {
-            pauseMenuPanel.SetActive(true);
+            ShowScreen(pauseMenuScreen);
+            Time.timeScale = 0f;
         }
-        Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
-        if (pauseMenuPanel != null)
+        if (pauseMenuScreen != null)
         {
-            pauseMenuPanel.SetActive(false);
+            HideScreen(pauseMenuScreen);
+            Time.timeScale = 1f;
         }
-        Time.timeScale = 1f;
-
     }
 
     public void OpenControls()
     {
-        if (pauseMenuPanel != null)
+        if (pauseMenuScreen != null)
         {
-            pauseMenuPanel.SetActive(false);
+            HideScreen(pauseMenuScreen);
+            ShowScreen(controlsScreen);
+            Time.timeScale = 0f;
         }
-
-        if (controlsPanel != null)
-        {
-            controlsPanel.SetActive(true);
-        }
-
-        Time.timeScale = 0f;
     }
 
     public void ReturnToMainMenu()
     {
-        if (pauseMenuPanel != null)
+        if (pauseMenuScreen != null)
         {
-            pauseMenuPanel.SetActive(false);
+            HideScreen(pauseMenuScreen);
+            HideScreen(gameplayScreen);
+            ShowScreen(mainMenuScreen);
+            Time.timeScale = 1f;
         }
-
-        if (mainMenuPanel != null)
-        {
-            mainMenuPanel.SetActive(true);
-        }
-
-        if (gameplayRoot != null)
-        {
-            controlsPanel.SetActive(false);
-        }
-
-        Time.timeScale = 1f;
     }
 }

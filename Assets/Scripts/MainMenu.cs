@@ -1,42 +1,75 @@
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private GameObject controlsPanel;
-    [SerializeField] private GameObject gameplayRoot;
+    [Header("Screens")]
+    [SerializeField] private CanvasGroup mainMenuScreen;
+    [SerializeField] private CanvasGroup controlsScreen;
+    [SerializeField] private CanvasGroup gameplayScreen;
+
+    [Header("Buttons")]
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button controlsButton;
+    [SerializeField] private Button quitButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void StartGame()
+    public void Start()
     {
-        if (mainMenuPanel != null)
+        if (startButton != null)
         {
-            mainMenuPanel.SetActive(false);
+            startButton.onClick.AddListener(StartGame);
         }
 
-        if (gameplayRoot != null)
+        if (controlsButton != null)
         {
-            gameplayRoot.SetActive(true);
+            controlsButton.onClick.AddListener(OpenControls);
         }
 
-        Time.timeScale = 1f;
+        if (quitButton != null)
+        {
+            quitButton.onClick.AddListener(QuitGame);
+        }
     }
 
     // Update is called once per frame
-    public void OpenControls()
+    public void ShowScreen(CanvasGroup screen)
     {
-        if (mainMenuPanel != null)
+        if (screen == null)
         {
-            mainMenuPanel.SetActive(false);
+            return;
         }
 
-        if (controlsPanel != null)
-        {
-            controlsPanel.SetActive(true);
-        }
+        screen.alpha = 1f;
+        screen.interactable = true;
+        screen.blocksRaycasts = true;
     }
 
+    public void HideScreen(CanvasGroup screen)
+    {
+        if (screen == null)
+        {
+            return;
+        }
+
+        screen.alpha = 0f;
+        screen.interactable = false;
+        screen.blocksRaycasts = false;
+    }
+
+    public void StartGame()
+    {
+        HideScreen(mainMenuScreen);
+        ShowScreen(gameplayScreen);
+        Time.timeScale = 1f;
+    }
+
+    public void OpenControls()
+    {
+        HideScreen(mainMenuScreen);
+        ShowScreen(controlsScreen);
+        Time.timeScale = 1f;
+    }
 
     public void QuitGame()
     {
