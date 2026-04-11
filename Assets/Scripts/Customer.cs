@@ -10,13 +10,13 @@ public class Customer : MonoBehaviour {
 
     private Sprite realitySprite;
     private Sprite imagineSprite;
-}
 
-private void Start(){
-    // setting randomized sprites
-    int realityRand = Random.Range(0, realitySpriteOps.Count());
-    realitySprite = realitySpriteOps[realityRand];
+    void Start(){
+        // setting randomized sprites
+        int realityRand = Random.Range(0, realitySpriteOps.Count);
+        realitySprite = realitySpriteOps[realityRand];
 
-    int imagineRand = Random.Range(0, imagineSpriteOps.Count());
-    imagineSprite = imagineSpriteOps[imagineRand];
+        int imagineRand = Random.Range(0, imagineSpriteOps.Count);
+        imagineSprite = imagineSpriteOps[imagineRand];
+    }
 }

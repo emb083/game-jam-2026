@@ -59,10 +59,10 @@ public class MindStateMachine : MonoBehaviour
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        EnterState(currentState);
-    }
+    // void Start()
+    // {
+    //     EnterState(currentState);
+    // }
 
     // Update is called once per frame
     void Update()
@@ -82,8 +82,7 @@ public class MindStateMachine : MonoBehaviour
 
     void SpawnCustomer()
     {
-        Vector3 spawnPoint = new Vector3(customerSpawn.bounds.center);
-        Instantiate(customerPrefab, spawnPoint, Quaternion.identity);
+        Instantiate(customerPrefab, customerSpawn.bounds.center, Quaternion.identity);
     }
 
     // private void UpdateCoolDowns()
