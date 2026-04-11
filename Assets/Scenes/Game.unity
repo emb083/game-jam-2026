@@ -296,6 +296,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
+    - target: {fileID: 7188084912072119812, guid: 079df4cad3400bf428b4e8ce3cb4c645, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7673567188201896808, guid: 079df4cad3400bf428b4e8ce3cb4c645, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1856
