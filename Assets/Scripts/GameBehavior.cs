@@ -38,18 +38,21 @@ public class MindStateMachine : MonoBehaviour
     public float imaginationSpeed = 6f;
     public float extremeSlowSpeed = 1f;
 
+    [Header("Customer Spawning")]
+    public float customerSpawnDelay = 1f;
+    private float customerSpawnTimer = 0f;
+
     [Header("Gameplay Effects")]
     [Range(0f, 1f)] public float imaginationOrderScrambleChance = 0.25f;
     [Range(0f, 1f)] public float maxInsanityGarbleRate = 1f;
 
     // Ideas for references to other systems
-    public PlayerMovement playerMovement;
+    // public PlayerMovement playerMovement;
     
-    /*
-    public OrderSystem orderSystem;
-    public VisualManager visualManager;
-    public CustomerManager customerManager;
-    public TooltipManager tooltipManager;
+    // public OrderSystem orderSystem;
+    // public VisualManager visualManager;
+    // public CustomerManager customerManager;
+    // public TooltipManager tooltipManager;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -61,203 +64,212 @@ public class MindStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateCoolDowns();
-        UpdateMeter();
-        CheckForForcedLocks();
-        HandleManualSwitchInput();
-        UpdateDynamicEffects();
-    }
+        // UpdateCoolDowns();
+        // UpdateMeter();
+        // CheckForForcedLocks();
+        // HandleManualSwitchInput();
+        // UpdateDynamicEffects();
 
-    private void UpdateCoolDowns()
-    {
-        if (switchCooldownTimer > 0f)
-            switchCooldownTimer -= Time.deltaTime;
-
-        if (lockTimer > 0f)
-            lockTimer -= Time.deltaTime;
-
-        // End lock states when timer is done
-        if (lockTimer <= 0f)
-        {
-            if (currentState == MindState.REALITY_LOCKED)
-            {
-                ChangeState(MindState.REALITY);
-            }
-            else if (currentState == MindState.IMAGINATION_LOCKED)
-            {
-                ChangeState(MindState.IMAGINATION);
-            }
+        customerSpawnTimer += Time.deltaTime;
+        if (customerSpawnTimer >= customerSpawnDelay) {
+            SpawnCustomer();
         }
     }
 
-    private void UpdateMeter()
+    void SpawnCustomer()
     {
-        switch (currentState)
-        {
-            case MindState.REALITY:
-            case MindState.REALITY_LOCKED:
-                boredom += boredomIncreaseRate * Time.deltaTime;
-                insanity -= insanityDecreaseRate * Time.deltaTime;
-                break;
 
-            case MindState.IMAGINATION:
-            case MindState.IMAGINATION_LOCKED:
-                insanity += insanityIncreaseRate * Time.deltaTime;
-                boredom -= boredomDecreaseRate * Time.deltaTime;
-                break;
-        }
-        boredom = Mathf.Clamp(boredom, 0f, 100f);
-        insanity = Mathf.Clamp(insanity, 0f, 100f);
     }
 
-    private void CheckForForcedLocks()
-    {
-        // If meter maxes out during a normal state, force lock into that mode
-        if (currentState == MindState.REALITY && boredom >= 100f)
-        {
-            ChangeState(MindState.REALITY_LOCKED);
-        }
+    // private void UpdateCoolDowns()
+    // {
+    //     if (switchCooldownTimer > 0f)
+    //         switchCooldownTimer -= Time.deltaTime;
 
-        else if (currentState == MindState.IMAGINATION && insanity >= 100f)
-        {
-            ChangeState(MindState.IMAGINATION_LOCKED);
-        }
-    }
+    //     if (lockTimer > 0f)
+    //         lockTimer -= Time.deltaTime;
 
-    private void HandleManualSwitchInput()
-    {
-        if (!Input.GetKeyDown(KeyCode.Tab))
-            return;
+    //     // End lock states when timer is done
+    //     if (lockTimer <= 0f)
+    //     {
+    //         if (currentState == MindState.REALITY_LOCKED)
+    //         {
+    //             ChangeState(MindState.REALITY);
+    //         }
+    //         else if (currentState == MindState.IMAGINATION_LOCKED)
+    //         {
+    //             ChangeState(MindState.IMAGINATION);
+    //         }
+    //     }
+    // }
 
-        // Cannot manually switch during a locked state
-        if (currentState == MindState.REALITY_LOCKED || currentState == MindState.IMAGINATION_LOCKED)
-            return;
+    // private void UpdateMeter()
+    // {
+    //     switch (currentState)
+    //     {
+    //         case MindState.REALITY:
+    //         case MindState.REALITY_LOCKED:
+    //             boredom += boredomIncreaseRate * Time.deltaTime;
+    //             insanity -= insanityDecreaseRate * Time.deltaTime;
+    //             break;
 
-        // Cannot switch if cooldown is active
-        if (switchCooldownTimer > 0f)
-            return;
+    //         case MindState.IMAGINATION:
+    //         case MindState.IMAGINATION_LOCKED:
+    //             insanity += insanityIncreaseRate * Time.deltaTime;
+    //             boredom -= boredomDecreaseRate * Time.deltaTime;
+    //             break;
+    //     }
+    //     boredom = Mathf.Clamp(boredom, 0f, 100f);
+    //     insanity = Mathf.Clamp(insanity, 0f, 100f);
+    // }
 
-        if (currentState == MindState.REALITY)
-        {
-            ChangeState(MindState.IMAGINATION);
-        }
-        else if (currentState == MindState.IMAGINATION)
-        {
-            ChangeState(MindState.REALITY);
-        }
-    }
+    // private void CheckForForcedLocks()
+    // {
+    //     // If meter maxes out during a normal state, force lock into that mode
+    //     if (currentState == MindState.REALITY && boredom >= 100f)
+    //     {
+    //         ChangeState(MindState.REALITY_LOCKED);
+    //     }
 
-    public void ChangeState(MindState newState)
-    {
-        ExitState(currentState);
-        currentState = newState;
-        EnterState(newState);
-    }
+    //     else if (currentState == MindState.IMAGINATION && insanity >= 100f)
+    //     {
+    //         ChangeState(MindState.IMAGINATION_LOCKED);
+    //     }
+    // }
 
-    private void EnterState(MindState state)
-    {
-        switch(state)
-        {
-            case MindState.REALITY:
-                ApplyRealityMode();
-                switchCooldownTimer = switchCooldownDuration;
-                break;
+    // private void HandleManualSwitchInput()
+    // {
+    //     if (!Input.GetKeyDown(KeyCode.Tab))
+    //         return;
 
-            case MindState.IMAGINATION:
-                ApplyImaginationMode();
-                switchCooldownTimer = switchCooldownDuration;
-                break;
+    //     // Cannot manually switch during a locked state
+    //     if (currentState == MindState.REALITY_LOCKED || currentState == MindState.IMAGINATION_LOCKED)
+    //         return;
 
-            case MindState.REALITY_LOCKED:
-                ApplyRealityMode();
-                lockTimer = lockDuration;
-                break;
+    //     // Cannot switch if cooldown is active
+    //     if (switchCooldownTimer > 0f)
+    //         return;
 
-            case MindState.IMAGINATION_LOCKED:
-                ApplyImaginationMode();
-                lockTimer = lockDuration;
-                break;
+    //     if (currentState == MindState.REALITY)
+    //     {
+    //         ChangeState(MindState.IMAGINATION);
+    //     }
+    //     else if (currentState == MindState.IMAGINATION)
+    //     {
+    //         ChangeState(MindState.REALITY);
+    //     }
+    // }
 
-        }
-    }
+    // public void ChangeState(MindState newState)
+    // {
+    //     ExitState(currentState);
+    //     currentState = newState;
+    //     EnterState(newState);
+    // }
 
-    private void ExitState(MindState state)
-    {
-        // Optional cleanup if we need it later
-    }
+    // private void EnterState(MindState state)
+    // {
+    //     switch(state)
+    //     {
+    //         case MindState.REALITY:
+    //             ApplyRealityMode();
+    //             switchCooldownTimer = switchCooldownDuration;
+    //             break;
 
-    private void ApplyRealityMode()
-    {
-        // Visuals
-        visualManager.setGrayScaleWorld();
-        customerManager.SetHumanCustomer();
+    //         case MindState.IMAGINATION:
+    //             ApplyImaginationMode();
+    //             switchCooldownTimer = switchCooldownDuration;
+    //             break;
 
-        // Orders
-        orderSystem.SetUseMedicationNames(true);
-        orderSystem.SetScrambleChance(0f);
+    //         case MindState.REALITY_LOCKED:
+    //             ApplyRealityMode();
+    //             lockTimer = lockDuration;
+    //             break;
 
-        // Player Movements
-        playerMovement.SetMoveSpeed(normalRealitySpeed);
+    //         case MindState.IMAGINATION_LOCKED:
+    //             ApplyImaginationMode();
+    //             lockTimer = lockDuration;
+    //             break;
 
-        // Tooltips
-        tooltipManager.SetGarbleRate(0f);
+    //     }
+    // }
 
-        // Optional object lables / shelf UI
-        orderSystem.ShowRealityLabels();
-    }
+    // private void ExitState(MindState state)
+    // {
+    //     // Optional cleanup if we need it later
+    // }
 
-    private void ApplyImaginationMode()
-    {
-        // Visuals
-        visualManager.SetFunkyColorWorld();
-        visualManager.SetAlienCustomers();
+    // private void ApplyRealityMode()
+    // {
+    //     // Visuals
+    //     visualManager.setGrayScaleWorld();
+    //     customerManager.SetHumanCustomer();
 
-        // Order
-        orderSystem.SetUseMedicationNames(false); // using nonsense objects now
-        orderSystem.SetScrambleChance(imaginationOrderScrambleChance);
+    //     // Orders
+    //     orderSystem.SetUseMedicationNames(true);
+    //     orderSystem.SetScrambleChance(0f);
 
-        // Player Movement
-        playerMovement.SetMoveSpeed(imaginationSpeed);
+    //     // Player Movements
+    //     playerMovement.SetMoveSpeed(normalRealitySpeed);
 
-        // Tooltip 
-        tooltipManager.SetGarbleRate(insanity / 100f);
+    //     // Tooltips
+    //     tooltipManager.SetGarbleRate(0f);
 
-        // Optional object lables / shelf UI
-        orderSystem.ShowImaginationLabels();
-    }
+    //     // Optional object lables / shelf UI
+    //     orderSystem.ShowRealityLabels();
+    // }
 
-    private void UpdateDynamicEffects()
-    {
-        // Reality punishment with full boredom bringing slowness
-        if (currentState == MindState.REALITY || currentState == MindState.REALITY_LOCKED)
-        {
-            if (boredom >= 100f)
-            {
-                playerMovement.SetMoveSpeed(extremeSlowSpeed);
-            }
-            else if (boredom >= 75f)
-            {
-                playerMovement.SetMoveSpeed(slowedRealitySpeed); 
-            }
-            else
-            {
-                playerMovement.SetMoveSpeed(normalRealitySpeed);
-            }
+    // private void ApplyImaginationMode()
+    // {
+    //     // Visuals
+    //     visualManager.SetFunkyColorWorld();
+    //     visualManager.SetAlienCustomers();
 
-            tooltipManager.SetGarbleRate(0f);
-        }
+    //     // Order
+    //     orderSystem.SetUseMedicationNames(false); // using nonsense objects now
+    //     orderSystem.SetScrambleChance(imaginationOrderScrambleChance);
 
-        // Imagination punishment with full insanity increasing garble
-        if (currentState == MindState.IMAGINATION || currentState == MindState.IMAGINATION_LOCKED)
-        {
-            float garbleRate = insanity / 100f;
-            garbleRate = Mathf.Clamp(garbleRate, 0f, maxInsanityGarbleRate);
+    //     // Player Movement
+    //     playerMovement.SetMoveSpeed(imaginationSpeed);
 
-            tooltipManager.SetGarbleRate(garbleRate);
-            orderSystem.SetLiveGarbleRate(garbleRate);
+    //     // Tooltip 
+    //     tooltipManager.SetGarbleRate(insanity / 100f);
 
-            playerMovement.SetMoveSpeed(imaginationSpeed);
-        }
-    }
-    */
+    //     // Optional object lables / shelf UI
+    //     orderSystem.ShowImaginationLabels();
+    // }
+
+    // private void UpdateDynamicEffects()
+    // {
+    //     // Reality punishment with full boredom bringing slowness
+    //     if (currentState == MindState.REALITY || currentState == MindState.REALITY_LOCKED)
+    //     {
+    //         if (boredom >= 100f)
+    //         {
+    //             playerMovement.SetMoveSpeed(extremeSlowSpeed);
+    //         }
+    //         else if (boredom >= 75f)
+    //         {
+    //             playerMovement.SetMoveSpeed(slowedRealitySpeed); 
+    //         }
+    //         else
+    //         {
+    //             playerMovement.SetMoveSpeed(normalRealitySpeed);
+    //         }
+
+    //         tooltipManager.SetGarbleRate(0f);
+    //     }
+
+    //     // Imagination punishment with full insanity increasing garble
+    //     if (currentState == MindState.IMAGINATION || currentState == MindState.IMAGINATION_LOCKED)
+    //     {
+    //         float garbleRate = insanity / 100f;
+    //         garbleRate = Mathf.Clamp(garbleRate, 0f, maxInsanityGarbleRate);
+
+    //         tooltipManager.SetGarbleRate(garbleRate);
+    //         orderSystem.SetLiveGarbleRate(garbleRate);
+
+    //         playerMovement.SetMoveSpeed(imaginationSpeed);
+    //     }
+    // }
 }

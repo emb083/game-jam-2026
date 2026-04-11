@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &201795286323249918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325864683633950440}
+  - component: {fileID: 7866721293160298687}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &325864683633950440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201795286323249918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.03099, y: -0.39235, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7866721293160298687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201795286323249918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcbf0869de88317479f073b060501392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MindStateMachine
+  currentState: 0
+  boredom: 0
+  insanity: 0
+  boredomIncreaseRate: 15
+  boredomDecreaseRate: 20
+  insanityIncreaseRate: 15
+  insanityDecreaseRate: 20
+  switchCooldownDuration: 2
+  lockDuration: 60
+  normalRealitySpeed: 4
+  slowedRealitySpeed: 2
+  imaginationSpeed: 6
+  extremeSlowSpeed: 1
+  imaginationOrderScrambleChance: 0.25
+  maxInsanityGarbleRate: 1
+  playerMovement: {fileID: 0}
