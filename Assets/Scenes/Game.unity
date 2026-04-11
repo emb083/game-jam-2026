@@ -1240,6 +1240,55 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7667374138179439994, guid: ec95a97870b9f8e438e02128aff91a19, type: 3}
   m_PrefabInstance: {fileID: 1405635584}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1430477567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1430477569}
+  - component: {fileID: 1430477568}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1430477568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430477567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 6291b4e2326fda945b84577e25eef16d, type: 2}
+--- !u!4 &1430477569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430477567}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.049013, y: 5.883289, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1444003501 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 6149655497247195145, guid: 2505d50903ca62a48bfd37ba878b767d, type: 3}
@@ -1297,6 +1346,10 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3325808779273524811, guid: 06a7be93834c0234387a1e694341a3a1, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3393671125854315031, guid: 06a7be93834c0234387a1e694341a3a1, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4448649
@@ -1331,8 +1384,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 619394802}
+  - {fileID: 1430477569}
+  - {fileID: 669538220}
   - {fileID: 1619032239}
   - {fileID: 852012027}
   - {fileID: 110138483}
   - {fileID: 1378327877}
-  - {fileID: 669538220}
