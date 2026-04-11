@@ -79,7 +79,7 @@ public class GameBehavior : MonoBehaviour
         // UpdateDynamicEffects();
 
         customerSpawnTimer += Time.deltaTime;
-        if (customerSpawnTimer >= customerSpawnDelay) {
+        if (customerSpawnTimer >= customerSpawnDelay && Map.Instance.waitSpots[Map.Instance.waitSpots.Count - 1].GetComponent<LineSpot>().occupied is false) {
             SpawnCustomer();
             customerSpawnTimer = 0f;
         }

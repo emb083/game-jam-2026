@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 public class Customer : MonoBehaviour {
-    public float customerSpeed = 0.4f;
-    public List<Sprite> realitySpriteOps;
-    public List<Sprite> imagineSpriteOps;
+    public float customerSpeed = 1f;
+    public List<Sprite> realitySpriteOps = null;
+    public List<Sprite> imagineSpriteOps = null;
+    public GameObject currentSpot = null;
 
     private Sprite realitySprite;
     private Sprite imagineSprite;
     private GameBehavior Game;
     private GameObject prescription;
+    private List<GameObject> waitSpots = null;
+    private GameObject targetSpot = null;
 
     void Start(){
+        waitSpots = Map.Instance.waitSpots;
+        targetSpot = waitSpots[(waitSpots.Count - 1)];
+        currentSpot = waitSpots[(waitSpots.Count - 1)];
         Game = GameBehavior.Instance;
         SpriteRenderer renderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
 
@@ -34,5 +40,26 @@ public class Customer : MonoBehaviour {
         // setting randomized prescription
         int prescRand = Random.Range(0, Map.Instance.medications.Count);
         prescription = Map.Instance.medications[prescRand];
+    }
+
+    void Update(){
+        if (currentSpot != targetSpot){
+            this.transform.position = Vector3.MoveTowards(transform.position, targetSpot.transform.position, (customerSpeed * Time.deltaTime));
+        }
+
+        foreach (GameObject spot in waitSpots){
+            LineSpot spotData = spot.GetComponent<LineSpot>();
+            LineSpot curSpotData = currentSpot.GetComponent<LineSpot>();
+            if (spotData.occupied is false && spotData.spotNum < curSpotData.spotNum){
+                targetSpot = spot;
+                print($"Target spot: #{targetSpot.GetComponent<LineSpot>().spotNum}");
+            }
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D c){
+        if (c.CompareTag("LineSpot")) {
+            currentSpot = c.gameObject;
+        }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Bounds
   - Med
   - Customer
+  - LineSpot
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - GameSet
+  - Customers
   - 
   - 
   - 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7054823311519126142}
   - component: {fileID: 3128295726106285799}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4196245961953340771}
   - component: {fileID: 1426675304532851677}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 3949255793117075567}
   - component: {fileID: 22671397250810250}
   - component: {fileID: 4730826449205758764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 4
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 4991154843200603523}
   - component: {fileID: 4697126851649730859}
   - component: {fileID: 6161109890415731363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 2
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 135665953680373815}
   - component: {fileID: 4546909830166680799}
   - component: {fileID: 7702669879514732058}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 3
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 7480298165844400402}
   - component: {fileID: 5042676633949543805}
   - component: {fileID: 8518480342371372704}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 1
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3750384479636287315}
   - component: {fileID: 4342505899294333653}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 863526158890144401}
   - component: {fileID: 6798155056312443317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 1671038717713130973}
   - component: {fileID: 1654657578873517305}
   - component: {fileID: 438198917363261528}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Shelf
   m_TagString: SetPiece
   m_Icon: {fileID: 0}
