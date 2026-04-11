@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SetPiece
   - Bounds
+  - Med
   layers:
   - Default
   - TransparentFX

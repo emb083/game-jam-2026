@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 5654746182846900881}
   m_Layer: 0
   m_Name: Left Shelf
-  m_TagString: Untagged
+  m_TagString: SetPiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

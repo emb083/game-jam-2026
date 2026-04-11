@@ -780,9 +780,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4646918847682920846}
   - component: {fileID: 6244410682005508530}
+  - component: {fileID: 2360047321820877850}
   m_Layer: 0
   m_Name: Meds 3
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -796,8 +797,8 @@ Transform:
   m_GameObject: {fileID: 2845792958691972641}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -5.19, z: 0}
-  m_LocalScale: {x: 0.5, y: 11.5, z: 0}
+  m_LocalPosition: {x: 0.93, y: -1.12, z: 0}
+  m_LocalScale: {x: 0.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7508034576726487186}
@@ -848,6 +849,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &2360047321820877850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845792958691972641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Zyrtec
+  imagineName: Anxiety
 --- !u!1 &2948432344546843207
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,9 +873,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5758285419689889256}
   - component: {fileID: 5548795336625992625}
+  - component: {fileID: 3278630339507943}
   m_Layer: 0
   m_Name: Meds 3
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,8 +890,8 @@ Transform:
   m_GameObject: {fileID: 2948432344546843207}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -5.19, z: 0}
-  m_LocalScale: {x: 0.5, y: 11.5, z: 0}
+  m_LocalPosition: {x: 0.93, y: -1.12, z: 0}
+  m_LocalScale: {x: 0.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7468449971012500724}
@@ -926,6 +942,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &3278630339507943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2948432344546843207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Norvasc
+  imagineName: Dynamite
 --- !u!1 &3799490934803286409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,9 +1200,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3526214081489736020}
   - component: {fileID: 4612795210782192125}
+  - component: {fileID: 3947818993897813190}
   m_Layer: 0
   m_Name: Meds 4
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1187,7 +1218,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2.6, z: 0}
-  m_LocalScale: {x: 1.4, y: 4, z: 0}
+  m_LocalScale: {x: 0.5, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5662929800131885955}
@@ -1238,6 +1269,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &3947818993897813190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013675790203804540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Omeprazole
+  imagineName: Teeths
 --- !u!1 &4199271267496542372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,9 +1293,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3984023213554712163}
   - component: {fileID: 386396934330814830}
+  - component: {fileID: 929640045294925793}
   m_Layer: 0
   m_Name: Meds 5
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,7 +1311,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2.6, z: 0}
-  m_LocalScale: {x: 1.4, y: 4, z: 0}
+  m_LocalScale: {x: 0.5, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3159517619138347808}
@@ -1316,6 +1362,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &929640045294925793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4199271267496542372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Losartan
+  imagineName: Integral
 --- !u!1 &4220240434837938092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,9 +1386,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3491017368965733101}
   - component: {fileID: 1769830228106224834}
+  - component: {fileID: 146431424519105182}
   m_Layer: 0
   m_Name: Meds 1
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1343,7 +1404,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2.6, z: 0}
-  m_LocalScale: {x: 1.4, y: 4, z: 0}
+  m_LocalScale: {x: 0.5, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1652546645088341990}
@@ -1394,6 +1455,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &146431424519105182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4220240434837938092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Metformin
+  imagineName: Poiple
 --- !u!1 &4249555332019269903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,9 +1805,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2894130222138901276}
   - component: {fileID: 8523821859428794703}
+  - component: {fileID: 3354170952201921662}
   m_Layer: 0
   m_Name: Meds 2
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1747,7 +1823,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2.6, z: 0}
-  m_LocalScale: {x: 1.4, y: 4, z: 0}
+  m_LocalScale: {x: 0.5, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6450442158863849798}
@@ -1798,6 +1874,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &3354170952201921662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705516828356869678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Lisinopril
+  imagineName: Octopus
 --- !u!1 &4777937155164314876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,9 +2320,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1150940122352151531}
   - component: {fileID: 8124331144134513425}
+  - component: {fileID: 693514310931891462}
   m_Layer: 0
   m_Name: Meds 4
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2246,8 +2337,8 @@ Transform:
   m_GameObject: {fileID: 7207139439267706695}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -5.19, z: 0}
-  m_LocalScale: {x: 0.5, y: 11.5, z: 0}
+  m_LocalPosition: {x: 0.93, y: -1.12, z: 0}
+  m_LocalScale: {x: 0.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6814534207987466909}
@@ -2298,6 +2389,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &693514310931891462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7207139439267706695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Microzide
+  imagineName: Blobfish
 --- !u!1 &7242445422665236635
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,9 +2413,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4447689584593358493}
   - component: {fileID: 1984539840790779325}
+  - component: {fileID: 8823331444883291769}
   m_Layer: 0
   m_Name: Meds 3
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2325,7 +2431,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2.6, z: 0}
-  m_LocalScale: {x: 1.4, y: 4, z: 0}
+  m_LocalScale: {x: 0.5, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6255459796976255890}
@@ -2376,6 +2482,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &8823331444883291769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7242445422665236635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Albuterol
+  imagineName: Leadchips
 --- !u!1 &7750766582780558113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,9 +2506,10 @@ GameObject:
   m_Component:
   - component: {fileID: 30491620848920461}
   - component: {fileID: 2336999733744502225}
+  - component: {fileID: 8566627064087347743}
   m_Layer: 0
   m_Name: Meds 4
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2402,8 +2523,8 @@ Transform:
   m_GameObject: {fileID: 7750766582780558113}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -5.19, z: 0}
-  m_LocalScale: {x: 0.5, y: 11.5, z: 0}
+  m_LocalPosition: {x: 0.93, y: -1.12, z: 0}
+  m_LocalScale: {x: 0.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5838548335997177595}
@@ -2454,6 +2575,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &8566627064087347743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750766582780558113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Penicillin
+  imagineName: Monolith
 --- !u!1 &8259929481433760256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,9 +2599,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3723930554075244063}
   - component: {fileID: 1966430503277398661}
+  - component: {fileID: 4230551784967291488}
   m_Layer: 0
   m_Name: Meds 2
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2480,8 +2616,8 @@ Transform:
   m_GameObject: {fileID: 8259929481433760256}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -5.19, z: 0}
-  m_LocalScale: {x: 0.5, y: 11.5, z: 0}
+  m_LocalPosition: {x: 0.93, y: -1.12, z: 0}
+  m_LocalScale: {x: 0.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2580832915030647580}
@@ -2532,6 +2668,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &4230551784967291488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8259929481433760256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Tylenol
+  imagineName: Trilobite
 --- !u!1 &8281381304533496843
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,9 +2692,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7822047512345233708}
   - component: {fileID: 5318826151775125918}
+  - component: {fileID: 8570966987012724407}
   m_Layer: 0
   m_Name: Meds 8
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2559,7 +2710,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2.6, z: 0}
-  m_LocalScale: {x: 1.4, y: 4, z: 0}
+  m_LocalScale: {x: 0.5, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6733734723869375152}
@@ -2610,6 +2761,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &8570966987012724407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8281381304533496843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Adderall
+  imagineName: Plastic
 --- !u!1 &8351756664284734242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,9 +2877,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5074915351200521670}
   - component: {fileID: 8629183984837460099}
+  - component: {fileID: 4055316477936611960}
   m_Layer: 0
   m_Name: Meds 1
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2728,8 +2894,8 @@ Transform:
   m_GameObject: {fileID: 8433663280277649822}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -5.19, z: 0}
-  m_LocalScale: {x: 0.5, y: 11.5, z: 0}
+  m_LocalPosition: {x: 0.93, y: -1.12, z: 0}
+  m_LocalScale: {x: 0.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8863806050830864658}
@@ -2780,6 +2946,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &4055316477936611960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433663280277649822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Lexapro
+  imagineName: Felony
 --- !u!1 &8741924608758317815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,9 +2970,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3156921940755472619}
   - component: {fileID: 3944852707338820431}
+  - component: {fileID: 7007582178379104696}
   m_Layer: 0
   m_Name: Meds 6
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2807,7 +2988,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2.6, z: 0}
-  m_LocalScale: {x: 1.4, y: 4, z: 0}
+  m_LocalScale: {x: 0.5, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1194210103826044457}
@@ -2858,6 +3039,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &7007582178379104696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741924608758317815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Gabapentin
+  imagineName: Custard
 --- !u!1 &8830324483799810492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2868,9 +3063,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5664842623997803629}
   - component: {fileID: 6634195911109723168}
+  - component: {fileID: 3859371233559016415}
   m_Layer: 0
   m_Name: Meds 7
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2885,7 +3081,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2.6, z: 0}
-  m_LocalScale: {x: 1.4, y: 4, z: 0}
+  m_LocalScale: {x: 0.5, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 473022307446294209}
@@ -2936,6 +3132,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &3859371233559016415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8830324483799810492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Zoloft
+  imagineName: Nitrogen
 --- !u!1 &8835712923590227448
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,9 +3156,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5330325278573187488}
   - component: {fileID: 3086110420511880336}
+  - component: {fileID: 2184390909127831659}
   m_Layer: 0
   m_Name: Meds 1
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2962,8 +3173,8 @@ Transform:
   m_GameObject: {fileID: 8835712923590227448}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -5.19, z: 0}
-  m_LocalScale: {x: 0.5, y: 11.5, z: 0}
+  m_LocalPosition: {x: 0.93, y: -1.12, z: 0}
+  m_LocalScale: {x: 0.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8400962227580132724}
@@ -3014,6 +3225,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &2184390909127831659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8835712923590227448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Topamax
+  imagineName: Noses
 --- !u!1 &8967722840277741380
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,9 +3341,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4339967133350423161}
   - component: {fileID: 5480458473421008649}
+  - component: {fileID: 3460746289627692953}
   m_Layer: 0
   m_Name: Meds 2
-  m_TagString: Untagged
+  m_TagString: Med
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3132,8 +3358,8 @@ Transform:
   m_GameObject: {fileID: 9022271495316622950}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -5.19, z: 0}
-  m_LocalScale: {x: 0.5, y: 11.5, z: 0}
+  m_LocalPosition: {x: 0.93, y: -1.12, z: 0}
+  m_LocalScale: {x: 0.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3189766632101752698}
@@ -3184,3 +3410,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.11756858}
   m_EdgeRadius: 0
+--- !u!114 &3460746289627692953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022271495316622950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d61a226070b344ca15a6b57d386a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Medication
+  realName: Vicodin
+  imagineName: Blender
