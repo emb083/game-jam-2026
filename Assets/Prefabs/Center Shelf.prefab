@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1535887856367485186}
   - component: {fileID: 8208838582107352921}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1653676667241328810}
   - component: {fileID: 4971088223084439494}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 4634583631059573077}
   - component: {fileID: 2715154747768822779}
   - component: {fileID: 4658974589916681733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 2
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 6916331081184755640}
   - component: {fileID: 3682947418169047923}
   - component: {fileID: 7521600929193494010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 4
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 8578708396954342821}
   - component: {fileID: 2211128576987517747}
   - component: {fileID: 5915426426602100196}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 8
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 4228124305844290122}
   - component: {fileID: 1884985448354396219}
   - component: {fileID: 7424744780302576051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 6
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 5837001786070461759}
   - component: {fileID: 4627236903513544177}
   - component: {fileID: 5568971219230170194}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 7
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -659,7 +659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5770266495378986892}
   - component: {fileID: 6179934790140680129}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,7 +752,7 @@ GameObject:
   - component: {fileID: 3887162588556589841}
   - component: {fileID: 8641778154584407286}
   - component: {fileID: 3548277435194942530}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 3
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3929185949795888394}
   - component: {fileID: 7238345823843591477}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +937,7 @@ GameObject:
   - component: {fileID: 3665493981692026221}
   - component: {fileID: 325808474846520384}
   - component: {fileID: 2957764005114759240}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 1
   m_TagString: Med
   m_Icon: {fileID: 0}
@@ -1029,7 +1029,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1868199436936167035}
   - component: {fileID: 3291460102433761609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7268430981323777527}
   - component: {fileID: 4063042398310971581}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1214,7 +1214,7 @@ GameObject:
   - component: {fileID: 4765541366921810268}
   - component: {fileID: 5984810482492470946}
   - component: {fileID: 7817041687420024571}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Center Shelf
   m_TagString: SetPiece
   m_Icon: {fileID: 0}
@@ -1359,7 +1359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7454511304808480933}
   - component: {fileID: 673015687960827256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1451,7 +1451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2843863901352874599}
   - component: {fileID: 6559641690341264408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottle 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1544,7 +1544,7 @@ GameObject:
   - component: {fileID: 8515355154262449716}
   - component: {fileID: 8709357408021402040}
   - component: {fileID: 992264758297800568}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meds 5
   m_TagString: Med
   m_Icon: {fileID: 0}

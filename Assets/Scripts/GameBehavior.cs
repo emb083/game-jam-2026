@@ -2,8 +2,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class MindStateMachine : MonoBehaviour
+public class GameBehavior : MonoBehaviour
 {
+    public static GameBehavior Instance {get; private set;}
+
     public enum MindState{
         REALITY,
         IMAGINATION,
@@ -56,7 +58,10 @@ public class MindStateMachine : MonoBehaviour
     // public VisualManager visualManager;
     // public CustomerManager customerManager;
     // public TooltipManager tooltipManager;
-    
+
+    private void Awake() {
+        Instance = this;
+    }    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // void Start()
@@ -74,7 +79,7 @@ public class MindStateMachine : MonoBehaviour
         // UpdateDynamicEffects();
 
         customerSpawnTimer += Time.deltaTime;
-        if (customerSpawnTimer >= customerSpawnDelay) {
+        if (customerSpawnTimer >= customerSpawnDelay && Map.Instance.waitSpots[Map.Instance.waitSpots.Count - 1].GetComponent<LineSpot>().occupied is false) {
             SpawnCustomer();
             customerSpawnTimer = 0f;
         }
