@@ -1,16 +1,22 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
-public class Customer : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+public class Customer : MonoBehaviour {
+    public float customerSpeed = 0.4f;
+    public List<Sprite> realitySpriteOps;
+    public List<Sprite> imagineSpriteOps;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private Sprite realitySprite;
+    private Sprite imagineSprite;
+}
+
+private void Start(){
+    // setting randomized sprites
+    int realityRand = Random.Range(0, realitySpriteOps.Count());
+    realitySprite = realitySpriteOps[realityRand];
+
+    int imagineRand = Random.Range(0, imagineSpriteOps.Count());
+    imagineSprite = imagineSpriteOps[imagineRand];
 }

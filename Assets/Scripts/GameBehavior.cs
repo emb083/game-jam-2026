@@ -40,6 +40,9 @@ public class MindStateMachine : MonoBehaviour
 
     [Header("Customer Spawning")]
     public float customerSpawnDelay = 1f;
+    public BoxCollider2D customerSpawn;
+    public GameObject customerPrefab;
+
     private float customerSpawnTimer = 0f;
 
     [Header("Gameplay Effects")]
@@ -73,12 +76,14 @@ public class MindStateMachine : MonoBehaviour
         customerSpawnTimer += Time.deltaTime;
         if (customerSpawnTimer >= customerSpawnDelay) {
             SpawnCustomer();
+            customerSpawnTimer = 0f;
         }
     }
 
     void SpawnCustomer()
     {
-
+        Vector3 spawnPoint = new Vector3(customerSpawn.bounds.center);
+        Instantiate(customerPrefab, spawnPoint, Quaternion.identity);
     }
 
     // private void UpdateCoolDowns()
