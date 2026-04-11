@@ -7,6 +7,7 @@ TagManager:
   - SetPiece
   - Bounds
   - Med
+  - Customer
   layers:
   - Default
   - TransparentFX
