@@ -79,7 +79,7 @@ public class PlayerControls : MonoBehaviour {
         }
 
         if (input.Pause.IsPressed()) {
-            // pause game
+            PauseMenu.Instance.OpenPauseMenu();
         }
             
     }

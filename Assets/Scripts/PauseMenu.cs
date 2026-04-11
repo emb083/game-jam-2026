@@ -15,7 +15,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button mainMenuButton;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public static PauseMenu Instance {get; private set;}
+
+    private void Awake(){
+        Instance = this;
+    }
+
     public void Update()
     {
         if (resumeButton != null)
