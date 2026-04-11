@@ -136,3 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b388a2af695346e4aad3a4324e588f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
+  customerSpeed: 0.4
+  realitySpriteOps:
+  - {fileID: -9095717837082945937, guid: 1b9adcfa7a553684d8f3a7a52852e408, type: 3}
+  - {fileID: 7482667652216324306, guid: 68ff8aceecbe48248b2abb82ad27ee42, type: 3}
+  imagineSpriteOps:
+  - {fileID: 7482667652216324306, guid: b76b75aa46cace14c8a9e55dfddb6c6c, type: 3}
+  - {fileID: 3625043607559282579, guid: e30f14b477d29e84d94ca1a8e6cc8d53, type: 3}
