@@ -44,10 +44,13 @@ public class MindStateMachine : MonoBehaviour
 
     // Ideas for references to other systems
     public PlayerMovement playerMovement;
+    
+    /*
     public OrderSystem orderSystem;
     public VisualManager visualManager;
     public CustomerManager customerManager;
     public TooltipManager tooltipManager;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -256,4 +259,5 @@ public class MindStateMachine : MonoBehaviour
             playerMovement.SetMoveSpeed(imaginationSpeed);
         }
     }
+    */
 }
