@@ -9,6 +9,7 @@ TagManager:
   - Med
   - Customer
   - LineSpot
+  - orderSpot
   layers:
   - Default
   - TransparentFX

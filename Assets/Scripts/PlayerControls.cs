@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerControls : MonoBehaviour {
     // set in inspector
     public float movementSpeed = 5f;
 
     // set in script
     private PlayerActions inputActions;
+    private GameObject interactable;
+    private GameObject holding;
 
     private void Start() {
         inputActions = new ();
         inputActions.Enable();
         inputActions.Standard.Enable();
+
+        interactable = null;
+        holding = null;
     }
 
     private void Update() {
@@ -53,12 +58,37 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (input.Interact.IsPressed()){
-            // interact
+            if (interactable != null){
+                if (interactable.tag == "orderSpot"){
+                    // interact with customer
+                }
+                else if (interactable.tag == "Med"){
+                    GameObject heldObj = this.transform.Find("Held").gameObject;
+                    heldObj.SetActive(true);
+                    GameObject grabbedMed = interactable.transform.parent.gameObject;
+                    Sprite grabbedSprite = grabbedMed.GetComponent<SpriteRenderer>().sprite;
+                    heldObj.GetComponent<SpriteRenderer>().sprite = grabbedSprite;
+
+                    holding = interactable;
+                }
+            }
         }
 
         if (input.Swap.IsPressed()){
             // swap
         }
+
+        if (input.Pause.IsPressed()) {
+            // pause game
+        }
             
+    }
+
+    private void OnTriggerEnter2D (Collider2D c){
+        interactable = c.gameObject;
+    }
+
+    private void OnTriggerExit2D (){
+        interactable = null;
     }
 }

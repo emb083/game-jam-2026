@@ -538,9 +538,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960eb04ab1df1634aac52fba99550eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  winPanel: {fileID: 0}
-  mainMenuPanel: {fileID: 0}
-  gameplayRoot: {fileID: 0}
+  winScreen: {fileID: 0}
+  mainMenuScreen: {fileID: 0}
+  playAgainButton: {fileID: 0}
+  mainMenuButton: {fileID: 0}
 --- !u!1001 &681433009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -772,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2699835465008030933, guid: 079df4cad3400bf428b4e8ce3cb4c645, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.11025
+      value: -3.65
       objectReference: {fileID: 0}
     - target: {fileID: 2699835465008030933, guid: 079df4cad3400bf428b4e8ce3cb4c645, type: 3}
       propertyPath: m_LocalRotation.x
@@ -941,6 +942,14 @@ PrefabInstance:
     - target: {fileID: 8817376193143061003, guid: 079df4cad3400bf428b4e8ce3cb4c645, type: 3}
       propertyPath: m_Size.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959361385757456927, guid: 079df4cad3400bf428b4e8ce3cb4c645, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959361385757456927, guid: 079df4cad3400bf428b4e8ce3cb4c645, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1365,6 +1374,10 @@ PrefabInstance:
     - target: {fileID: 3393671125854315031, guid: 06a7be93834c0234387a1e694341a3a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.000000014901
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678228372543682361, guid: 06a7be93834c0234387a1e694341a3a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8983145111640758932, guid: 06a7be93834c0234387a1e694341a3a1, type: 3}
       propertyPath: m_Name
