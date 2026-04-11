@@ -19,7 +19,6 @@ public class Customer : MonoBehaviour {
     void Start(){
         waitSpots = Map.Instance.waitSpots;
         targetSpot = waitSpots[(waitSpots.Count - 1)];
-        currentSpot = waitSpots[(waitSpots.Count - 1)];
         Game = GameBehavior.Instance;
         SpriteRenderer renderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
 
@@ -47,12 +46,14 @@ public class Customer : MonoBehaviour {
             this.transform.position = Vector3.MoveTowards(transform.position, targetSpot.transform.position, (customerSpeed * Time.deltaTime));
         }
 
-        foreach (GameObject spot in waitSpots){
-            LineSpot spotData = spot.GetComponent<LineSpot>();
-            LineSpot curSpotData = currentSpot.GetComponent<LineSpot>();
-            if (spotData.occupied is false && spotData.spotNum < curSpotData.spotNum){
-                targetSpot = spot;
-                print($"Target spot: #{targetSpot.GetComponent<LineSpot>().spotNum}");
+        LineSpot curSpotData = null;
+        if (currentSpot != null){
+            curSpotData = currentSpot.GetComponent<LineSpot>();
+            foreach (GameObject spot in waitSpots){
+                LineSpot spotData = spot.GetComponent<LineSpot>();
+                    if (spotData.occupied is false && spotData.spotNum == curSpotData.spotNum - 1){
+                    targetSpot = spot;
+                }
             }
         }
     }
