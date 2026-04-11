@@ -11,6 +11,7 @@ public class Customer : MonoBehaviour {
     private Sprite realitySprite;
     private Sprite imagineSprite;
     private GameBehavior Game;
+    private GameObject prescription;
 
     void Start(){
         Game = GameBehavior.Instance;
@@ -29,5 +30,9 @@ public class Customer : MonoBehaviour {
         else if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED){
             renderer.sprite = imagineSprite;
         }
+
+        // setting randomized prescription
+        int prescRand = Random.Range(0, Map.Instance.medications.Count);
+        prescription = Map.Instance.medications[prescRand];
     }
 }
