@@ -15,14 +15,18 @@ public class Customer : MonoBehaviour {
     private GameObject prescription;
     private List<GameObject> waitSpots = null;
     private GameObject targetSpot = null;
+    private bool prescDisplayed;
 
     void Start(){
+        // setting initial vars
         waitSpots = Map.Instance.waitSpots;
         targetSpot = waitSpots[(waitSpots.Count - 1)];
         Game = GameBehavior.Instance;
-        SpriteRenderer renderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        prescDisplayed = false;
 
         // setting randomized sprites
+        SpriteRenderer renderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+
         int realityRand = Random.Range(0, realitySpriteOps.Count);
         realitySprite = realitySpriteOps[realityRand];
 
@@ -51,7 +55,7 @@ public class Customer : MonoBehaviour {
             curSpotData = currentSpot.GetComponent<LineSpot>();
             foreach (GameObject spot in waitSpots){
                 LineSpot spotData = spot.GetComponent<LineSpot>();
-                    if (spotData.occupied is false && spotData.spotNum == curSpotData.spotNum - 1){
+                    if (!spotData.occupied && spotData.spotNum == curSpotData.spotNum - 1){
                     targetSpot = spot;
                 }
             }
@@ -61,6 +65,51 @@ public class Customer : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D c){
         if (c.CompareTag("LineSpot")) {
             currentSpot = c.gameObject;
+
+            if (currentSpot.GetComponent<LineSpot>().spotNum == 1 && !prescDisplayed){
+                prescDisplayed = true;
+                DisplayPresc();
+            }
         }
+    }
+
+    private void DisplayPresc(){
+        string displayText = "";
+        if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED) {
+            displayText = prescription.GetComponent<Medication>().imagineName;
+
+            bool garble = Game.CheckGarble();
+            if (garble){
+                displayText = Garble(displayText);
+            }
+        }
+        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED) {
+            displayText = prescription.GetComponent<Medication>().realName;
+        }
+
+        // display prescription in speech bubble
+        print($"Prescription: {displayText}");
+    }
+
+    private string Garble(string text){
+        // convert to char array
+        char[] charArray = text.ToCharArray();
+
+        // make all lowercase
+        charArray[0] = char.ToLower(charArray[0]);
+
+        // scramble
+        for (int i = 0; i < charArray.Length; i++){
+            char temp = charArray[i];
+            int randomIndex = Random.Range(i, charArray.Length);
+            charArray[i] = charArray[randomIndex];
+            charArray[randomIndex] = temp;
+        }
+
+        // make new first letter uppercase
+        charArray[0] = char.ToUpper(charArray[0]);
+
+        // return full string from char array
+        return new string(charArray);
     }
 }

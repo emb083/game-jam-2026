@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR;
+using Random = UnityEngine.Random;
 
 public class GameBehavior : MonoBehaviour
 {
@@ -48,8 +49,7 @@ public class GameBehavior : MonoBehaviour
     private float customerSpawnTimer = 0f;
 
     [Header("Gameplay Effects")]
-    [Range(0f, 1f)] public float imaginationOrderScrambleChance = 0.25f;
-    [Range(0f, 1f)] public float maxInsanityGarbleRate = 1f;
+    [Range(0f, 1f)] public float garbleChance = 0f;
 
     // Ideas for references to other systems
     // public PlayerMovement playerMovement;
@@ -88,6 +88,14 @@ public class GameBehavior : MonoBehaviour
     void SpawnCustomer()
     {
         Instantiate(customerPrefab, customerSpawn.bounds.center, Quaternion.identity);
+    }
+
+    public bool CheckGarble(){
+        float randChance = Random.Range(0f,1f);
+        if (randChance < garbleChance){
+            return true;
+        }
+        return false;
     }
 
     // private void UpdateCoolDowns()
