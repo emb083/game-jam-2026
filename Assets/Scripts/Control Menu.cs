@@ -12,9 +12,6 @@ public class ControlMenu : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private Button backButton;
 
-    [Header("Flow")]
-    [SerializeField] private bool openedFromPauseMenu = false;
-
     public void Start()
     {
         if (backButton != null)
@@ -45,18 +42,10 @@ public class ControlMenu : MonoBehaviour
         screen.blocksRaycasts = false;
     }
 
-        public void Back()
+    public void Back()
     {
         HideScreen(controlsScreen);
-        if (openedFromPauseMenu)
-        {
-            ShowScreen(pauseMenuScreen);
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            ShowScreen(mainMenuScreen);
-        }
+        ShowScreen(mainMenuScreen);
     }
-
 }
+

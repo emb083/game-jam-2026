@@ -12,27 +12,15 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private CanvasGroup gameplayScreen;
 
     [Header("Buttons")]
-    [SerializeField] private Button openPauseButton;
     [SerializeField] private Button resumeButton;
-    [SerializeField] private Button controlButton;
     [SerializeField] private Button mainMenuButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Update()
     {
-        if (openPauseButton != null)
-        {
-            openPauseButton.onClick.AddListener(OpenPauseMenu);
-        }
-
         if (resumeButton != null)
         { 
             resumeButton.onClick.AddListener(ResumeGame);
-        }
-
-        if (controlButton != null)
-        {
-            controlButton.onClick.AddListener(OpenControls);
         }
 
         if (mainMenuButton != null)
