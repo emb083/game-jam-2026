@@ -17,8 +17,8 @@ public class Customer : MonoBehaviour {
     private List<GameObject> waitSpots = null;
     private GameObject targetSpot = null;
     private bool prescDisplayed;
-    private GameObject prescriptionBubble;
-    private TMP_Text prescriptionText;
+    private GameObject prescBubble;
+    private TMP_Text prescText;
 
 
     void Start(){
@@ -27,7 +27,7 @@ public class Customer : MonoBehaviour {
         targetSpot = waitSpots[(waitSpots.Count - 1)];
         Game = GameBehavior.Instance;
         prescDisplayed = false;
-         
+        prescBubble = this.transform.Find("PrescBubble").gameObject;
 
         // setting randomized sprites
         SpriteRenderer renderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
@@ -79,22 +79,7 @@ public class Customer : MonoBehaviour {
     }
 
     private void DisplayPresc() {
-        if (Game == null) {
-            Debug.LogError("Game is null on " + gameObject.name);
-            return;
-        }
-
-        if (prescription == null) {
-            Debug.LogError("Prescription is null on " + gameObject.name);
-            return;
-        }
-
         Medication med = prescription.GetComponent<Medication>();
-        if (med == null) {
-            Debug.LogError("Prescription has no Medication component on " + gameObject.name);
-            return;
-        }
-
         string displayText = "";
 
         if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED) {
@@ -105,35 +90,16 @@ public class Customer : MonoBehaviour {
                 displayText = Garble(displayText);
             }
         }
-
         else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED) {
             displayText = med.realName;
         }
 
         // display prescription in speech bubble
-        if (prescriptionBubble != null) {
-            prescriptionBubble.SetActive(true);
-        }
+        prescText = prescBubble.GetComponentInChildren<TMP_Text>();
+        prescText.text = displayText;
+        prescText.color = Color.black;
+        prescBubble.SetActive(true);
 
-        else
-        {
-            Debug.LogError("prescriptionBubble is null on " + gameObject.name);
-            return;
-        }
-
-        if (prescriptionText == null) {
-            prescriptionText = prescriptionBubble.GetComponentInChildren<TMP_Text>();
-        }
-
-        if (prescriptionText == null)
-        {
-            Debug.LogError("No TMP_Text found inside prescriptionBubble on " + gameObject.name);
-            return;
-        }
-
-        prescriptionText.text = displayText;
-
-        print($"Prescription: {displayText}");
         SoundManager.Play(SoundType.CUSTOMER_ORDER);
     }
 
