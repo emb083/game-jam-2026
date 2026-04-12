@@ -115,9 +115,22 @@ public class Customer : MonoBehaviour {
             prescriptionBubble.SetActive(true);
         }
 
+        else
+        {
+            Debug.LogError("prescriptionBubble is null on " + gameObject.name);
+            return;
+        }
+
         if (prescriptionText == null) {
             prescriptionText = prescriptionBubble.GetComponentInChildren<TMP_Text>();
         }
+
+        if (prescriptionText == null)
+        {
+            Debug.LogError("No TMP_Text found inside prescriptionBubble on " + gameObject.name);
+            return;
+        }
+
         prescriptionText.text = displayText;
 
         print($"Prescription: {displayText}");
