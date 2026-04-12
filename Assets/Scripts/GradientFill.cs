@@ -11,7 +11,7 @@ public class RadialSliderGradient : MonoBehaviour
     private void Start()
     {
         RadialSlider = GetComponent<Slider>();
-        RadialSlider.value = 30;
+        RadialSlider.value = 0.99f;
     }
 
     void Update()
@@ -19,7 +19,7 @@ public class RadialSliderGradient : MonoBehaviour
         // Update color based on the current fill amount (0 to 1)
         fillImage.color = colorGradient.Evaluate(fillImage.fillAmount);
 
-        if (RadialSlider.value < RadialSlider.maxValue)
+        if (RadialSlider.value > RadialSlider.minValue)
         {
             RadialSlider.value -= 0.03f * Time.deltaTime;
             RadialSlider.value = Mathf.Clamp(RadialSlider.value, RadialSlider.minValue, RadialSlider.maxValue);
