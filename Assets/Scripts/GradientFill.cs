@@ -30,8 +30,5 @@ public class RadialSliderGradient : MonoBehaviour
         }
     }
 
-    void SetTimer()
-    {
-        RadialSlider.value = 30;
-    }
+    void SetTimer() { RadialSlider.value = 30; }
 }
