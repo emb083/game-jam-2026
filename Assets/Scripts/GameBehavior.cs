@@ -28,7 +28,7 @@ public class GameBehavior : MonoBehaviour
 
     [Header("Lockout")]
     public float lockDuration = 60f; // 1 minute
-    public float lockTimer = 0f;
+    private float lockTimer = 0f;
 
     [Header("Movement")]
     public float depressionSpeed = 1.2f;
@@ -69,6 +69,7 @@ public class GameBehavior : MonoBehaviour
             customerSpawnTimer = 0f;
         }
 
+        print("GB Update updating cooldowns");
         UpdateCoolDowns();
     }
 
@@ -111,7 +112,10 @@ public class GameBehavior : MonoBehaviour
     }
 
     private void UpdateCoolDowns() {
-        if (switchCooldownTimer > 0f) {switchCooldownTimer -= Time.deltaTime;}
+        if (switchCooldownTimer > 0f) {
+            switchCooldownTimer -= Time.deltaTime;
+            print("GB UCD lowering by time.deltatime");
+        }
 
         if (lockTimer > 0f) {lockTimer -= Time.deltaTime;}
 
@@ -177,6 +181,7 @@ public class GameBehavior : MonoBehaviour
         switch(state) {
             case MindState.REALITY:
                 switchCooldownTimer = switchCooldownDuration;
+                print("GB enterstate (reality) setting cooldown to full duration");
                 // get animator from customer, set boolean to switch
                 PostProcManager.Instance.ApplyRealityVFX();
                 PlayerControls.Instance.movementSpeed = 2.2f;
@@ -185,6 +190,7 @@ public class GameBehavior : MonoBehaviour
 
             case MindState.IMAGINATION:
                 switchCooldownTimer = switchCooldownDuration;
+                print("GB enterstate (imagination) setting cooldown to full duration");
                 // get animator from customer, set boolean to switch
                 PostProcManager.Instance.ApplyImagineVFX();
                 PlayerControls.Instance.movementSpeed = 4f;
