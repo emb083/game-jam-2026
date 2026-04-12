@@ -23,7 +23,7 @@ public class MeterManipulation : MonoBehaviour
                 InsanityMeter.value -= change;
             }
             else {
-                Depression();
+                //Depression();
             }
         }
         else {
@@ -33,7 +33,7 @@ public class MeterManipulation : MonoBehaviour
             }
 
             else {
-                Insanity();
+                //Insanity();
             }
         }
         BoredomBar.value = Mathf.Clamp(BoredomBar.value, BoredomBar.minValue, BoredomBar.maxValue);
