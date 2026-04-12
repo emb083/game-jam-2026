@@ -148,6 +148,7 @@ public class PlayerControls : MonoBehaviour {
 
         GameObject heldObj = this.transform.Find("Held").gameObject;
         heldObj.SetActive(false);
+        PlayerAnimator.SetBool("Holding", false);
     }
 
     private void CustomerInteract(GameObject customer){
