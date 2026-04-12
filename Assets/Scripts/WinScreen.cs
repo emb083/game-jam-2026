@@ -78,7 +78,7 @@ public class WinScreen : MonoBehaviour
         Time.timeScale = 1f;
 
         if (ScoreManager.Instance != null)
-            ScoreManager.Instance.ResetScore();
+            //ScoreManager.Instance.ResetScore();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
