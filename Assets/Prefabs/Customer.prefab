@@ -232,7 +232,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Omeprazole
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f685d10ccd9ac4498dece91fe2bc4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1de67fd0d5420fe4fa02dd827cad719d, type: 2}
   m_sharedMaterial: {fileID: -8316132936424555902, guid: 8f685d10ccd9ac4498dece91fe2bc4e2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -302,7 +302,7 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_renderer: {fileID: 7489792739574582540}
   m_maskType: 0
 --- !u!1 &1421429762763664366
