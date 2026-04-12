@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Random = UnityEngine.Random;
 using TMPro;
 
-public class Customer : MonoBehaviour {
+public class Customer : MonoBehaviour
+{
     public float customerSpeed = 1f;
     public List<Sprite> realitySpriteOps = null;
     public List<Sprite> imagineSpriteOps = null;
@@ -23,16 +24,15 @@ public class Customer : MonoBehaviour {
     private Animator customerAnimator;
     private int realityRand;
     private int imagineRand;
-    private ScoreManager ScoreManager;
 
-
-    void Start(){
+    void Start()
+    {
         // setting initial vars
         waitSpots = Map.Instance.waitSpots;
         targetSpot = waitSpots[(waitSpots.Count - 1)];
         Game = GameBehavior.Instance;
         prescDisplayed = false;
-        prescBubble = this.transform.Find("PrescBubble").gameObject;
+        prescBubble = this.transform.Find("PrescBubble")?.gameObject;
         despawn = GameObject.FindWithTag("Despawn");
         customerAnimator = this.GetComponent<Animator>();
 
@@ -47,74 +47,99 @@ public class Customer : MonoBehaviour {
         imagineSprite = imagineSpriteOps[imagineRand];
         customerAnimator.SetInteger("Sprite2", imagineRand);
 
-        if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED){
+        if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED)
+        {
             renderer.sprite = realitySprite;
         }
-        else if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.INSANE){
+        else if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.INSANE)
+        {
             renderer.sprite = imagineSprite;
         }
 
         // setting randomized prescription
         int prescRand = Random.Range(0, Map.Instance.medications.Count);
         prescription = Map.Instance.medications[prescRand];
-        Rigidbody2D Body = this.GetComponent<Rigidbody2D>();
+
+        Rigidbody2D body = this.GetComponent<Rigidbody2D>();
     }
 
-    void Update(){
+    void Update()
+    {
         // if order complete, go to despawn
-        if (targetSpot == despawn) {
+        if (targetSpot == despawn)
+        {
             this.transform.Translate(Vector3.left * customerSpeed * Time.deltaTime);
         }
 
         // if not at target spot, move
-        else if (currentSpot != targetSpot){
-            this.transform.position = Vector3.MoveTowards(transform.position, targetSpot.transform.position, (customerSpeed * Time.deltaTime));
+        else if (currentSpot != targetSpot)
+        {
+            this.transform.position = Vector3.MoveTowards(transform.position, targetSpot.transform.position, customerSpeed * Time.deltaTime);
         }
 
         // if next spot in line available, move
-        LineSpot curSpotData = null;
-        if (currentSpot != null){
-            curSpotData = currentSpot.GetComponent<LineSpot>();
-            foreach (GameObject spot in waitSpots){
-                LineSpot spotData = spot.GetComponent<LineSpot>();
-                if (!spotData.occupied && spotData.spotNum == curSpotData.spotNum - 1)
+        if (currentSpot != null)
+        {
+            LineSpot curSpotData = currentSpot.GetComponent<LineSpot>();
+            if (curSpotData != null)
+            {
+                foreach (GameObject spot in waitSpots)
                 {
-                    targetSpot = spot;
-                }
-                else if (spotData.occupied && spotData.spotNum == curSpotData.spotNum - 1)
-                {
-                    customerAnimator.SetBool("Walking", false);
-                    customerAnimator.SetBool("AtDesk", true);
+                    LineSpot spotData = spot.GetComponent<LineSpot>();
+                    if (spotData == null) continue;
+
+                    if (!spotData.occupied && spotData.spotNum == curSpotData.spotNum - 1)
+                    {
+                        targetSpot = spot;
+                    }
+                    else if (spotData.occupied && spotData.spotNum == curSpotData.spotNum - 1)
+                    {
+                        customerAnimator.SetBool("Walking", false);
+                        customerAnimator.SetBool("AtDesk", true);
+                    }
                 }
             }
         }
 
-        if (OrderTimer.Instance.HasExpired()){
-            ScoreManager.Instance.AddMissedOrderPenalty();
-            if (GameBehavior.Instance.currentState == GameBehavior.MindState.IMAGINATION || GameBehavior.Instance.currentState == GameBehavior.MindState.INSANE){
+        if (OrderTimer.Instance != null && OrderTimer.Instance.HasExpired())
+        {
+            if (ScoreManager.Instance != null)
+                ScoreManager.Instance.AddMissedOrderPenalty();
+
+            if (GameBehavior.Instance.currentState == GameBehavior.MindState.IMAGINATION || GameBehavior.Instance.currentState == GameBehavior.MindState.INSANE)
+            {
                 SoundManager.Play(SoundType.ORDER_MISSED_ALIEN);
             }
-            else if (GameBehavior.Instance.currentState == GameBehavior.MindState.REALITY || GameBehavior.Instance.currentState == GameBehavior.MindState.DEPRESSED){
+            else if (GameBehavior.Instance.currentState == GameBehavior.MindState.REALITY || GameBehavior.Instance.currentState == GameBehavior.MindState.DEPRESSED)
+            {
                 SoundManager.Play(SoundType.ORDER_MISSED_HUMAN);
             }
+
             Leave();
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D c){
-        
-        if (c.CompareTag("Despawn")) {
+
+    private void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.CompareTag("Despawn"))
+        {
             Destroy(gameObject);
         }
-        else if (c.CompareTag("LineSpot")) {
+        else if (c.CompareTag("LineSpot"))
+        {
             currentSpot = c.gameObject;
-            if (currentSpot.GetComponent<LineSpot>().spotNum == 1 && !prescDisplayed){
+
+            LineSpot lineSpot = currentSpot.GetComponent<LineSpot>();
+            if (lineSpot != null && lineSpot.spotNum == 1 && !prescDisplayed)
+            {
                 // start order
                 prescDisplayed = true;
                 customerAnimator.SetBool("Walking", false);
                 customerAnimator.SetBool("AtDesk", true);
                 DisplayPresc();
-                OrderTimer.Instance.StartTimer();
+
+                if (OrderTimer.Instance != null)
+                    OrderTimer.Instance.StartTimer();
             }
         }
     }
@@ -128,32 +153,49 @@ public class Customer : MonoBehaviour {
         }
     }
 
-    private void DisplayPresc() {
+    private void DisplayPresc()
+    {
+        if (prescription == null) return;
+
         Medication med = prescription.GetComponent<Medication>();
+        if (med == null) return;
+
         string displayText = "";
 
-        if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.INSANE) {
+        if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.INSANE)
+        {
             displayText = med.imagineName;
 
             bool garble = Game.CheckGarble();
-            if (garble) {
+            if (garble)
+            {
                 displayText = Game.Garble(displayText);
             }
         }
-        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED) {
+        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED)
+        {
             displayText = med.realName;
         }
 
         // display prescription in speech bubble
-        prescText = prescBubble.GetComponentInChildren<TMP_Text>();
-        prescText.text = displayText;
-        prescText.color = Color.black;
-        prescBubble.SetActive(true);
+        if (prescBubble != null)
+        {
+            prescText = prescBubble.GetComponentInChildren<TMP_Text>();
+
+            if (prescText != null)
+            {
+                prescText.text = displayText;
+                prescText.color = Color.black;
+            }
+
+            prescBubble.SetActive(true);
+        }
 
         SoundManager.Play(SoundType.CUSTOMER_ORDER);
     }
 
-    private string Garble(string text){
+    private string Garble(string text)
+    {
         // convert to char array
         char[] charArray = text.ToCharArray();
 
@@ -161,7 +203,8 @@ public class Customer : MonoBehaviour {
         charArray[0] = char.ToLower(charArray[0]);
 
         // scramble
-        for (int i = 0; i < charArray.Length; i++){
+        for (int i = 0; i < charArray.Length; i++)
+        {
             char temp = charArray[i];
             int randomIndex = Random.Range(i, charArray.Length);
             charArray[i] = charArray[randomIndex];
@@ -175,27 +218,54 @@ public class Customer : MonoBehaviour {
         return new string(charArray);
     }
 
-    public bool CheckPresc(GameObject held){
-        if (held == prescription){
-            return true;
+    public bool CheckPresc(GameObject held)
+    {
+        return held == prescription;
+    }
+
+    public void HandleCorrectOrder()
+    {
+        float timeLeft = 0f;
+
+        if (OrderTimer.Instance != null)
+            timeLeft = OrderTimer.Instance.currentTime;
+
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.AddSuccessfulOrderPoints(timeLeft);
+
+        Leave();
+    }
+
+    public void HandleWrongOrder()
+    {
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.AddWrongOrderPenalty();
+    }
+
+    public void Leave()
+    {
+        if (OrderTimer.Instance != null)
+        {
+            OrderTimer.Instance.timerExpired = false;
+            OrderTimer.Instance.StopTimer();
         }
-        return false;
-    }
 
-    public void Leave(){
-        OrderTimer.Instance.timerExpired = false;
-        OrderTimer.Instance.StopTimer();
         targetSpot = despawn;
-        prescBubble.SetActive(false);
+
+        if (prescBubble != null)
+            prescBubble.SetActive(false);
     }
 
-    public void SwapSprite(GameBehavior.MindState state){
-        // customerAnimator.SetTrigger("ChangeMode");
-        // if (state == GameBehavior.MindState.REALITY){
-        //     customerAnimator.SetBool("Alien", false);
-        // }
-        // else if (state == GameBehavior.MindState.IMAGINATION){
-        //     customerAnimator.SetBool("Alien", true);
-        // }
+    public void SwapSprite(GameBehavior.MindState state)
+    {
+        customerAnimator.SetTrigger("ChangeMode");
+        if (state == GameBehavior.MindState.REALITY)
+        {
+            customerAnimator.SetBool("Alien", false);
+        }
+        else if (state == GameBehavior.MindState.IMAGINATION)
+        {
+            customerAnimator.SetBool("Alien", true);
+        }
     }
 }

@@ -1,5 +1,5 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,11 +11,12 @@ public class WinScreen : MonoBehaviour
     [SerializeField] private Button playAgainButton;
     [SerializeField] private Button mainMenuButton;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Final Score UI")]
+    [SerializeField] private TMP_Text finalScoreText;
 
     public static WinScreen Instance { get; private set; }
 
-    public void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -28,12 +29,13 @@ public class WinScreen : MonoBehaviour
         }
     }
 
-    public void Update()
+    private void Start()
     {
         if (playAgainButton != null)
         {
             playAgainButton.onClick.AddListener(PlayAgain);
         }
+
         if (mainMenuButton != null)
         {
             mainMenuButton.onClick.AddListener(ReturnToMainMenu);
@@ -42,38 +44,49 @@ public class WinScreen : MonoBehaviour
 
     public void ShowScreen(GameObject screen)
     {
-       if (screen = null)
-       {
-            return;
-       }
-
-       screen.SetActive(true);
-    }
-
-    public void HideScreen(GameObject screen)
-    {
-        if (screen = null)
+        if (screen == null)
         {
             return;
         }
 
-        print(screen.name);
+        screen.SetActive(true);
+    }
+
+    public void HideScreen(GameObject screen)
+    {
+        if (screen == null)
+        {
+            return;
+        }
 
         screen.SetActive(false);
     }
-    
+
+    public void ShowWinScreen()
+    {
+        if (finalScoreText != null && ScoreManager.Instance != null)
+        {
+            finalScoreText.text = $"Final Score: {ScoreManager.Instance.Score}";
+        }
+
+        ShowScreen(winScreen);
+        Time.timeScale = 0f;
+    }
 
     public void PlayAgain()
-    {         
+    {
         Time.timeScale = 1f;
+
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.ResetScore();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    // Update is called once per frame
     public void ReturnToMainMenu()
     {
-        winScreen.SetActive(false);
-        mainMenuScreen.SetActive(true);
+        HideScreen(winScreen);
+        ShowScreen(mainMenuScreen);
         Time.timeScale = 0f;
     }
 
@@ -82,3 +95,4 @@ public class WinScreen : MonoBehaviour
         Application.Quit();
     }
 }
+

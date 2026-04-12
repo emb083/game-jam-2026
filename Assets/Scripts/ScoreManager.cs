@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
 
     private int score = 0;
+    private int missedOrders = 0;
 
     public int Score => score;
+    public int MissedOrders => missedOrders;
 
     private void Awake()
     {
@@ -25,8 +28,6 @@ public class ScoreManager : MonoBehaviour
 
         UpdateScoreUI();
     }
-
-    private void Update() => UpdateScoreUI();
 
     public void AddSuccessfulOrderPoints(float timeLeft)
     {
@@ -45,8 +46,27 @@ public class ScoreManager : MonoBehaviour
 
     public void AddMissedOrderPenalty()
     {
-        // Intentionally does nothing.
-        Debug.Log($"Missed order: +0, total score: {score}");
+        missedOrders++;
+        Debug.Log($"Missed order: +0, total score: {score}, missed orders: {missedOrders}");
+
+        if (missedOrders >= 3)
+        {
+            if (LoseScreen.Instance != null)
+            {
+                LoseScreen.Instance.ShowLoseScreen();
+            }
+            else
+            {
+                Debug.LogWarning("LoseScreen.Instance is null.");
+            }
+        }
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+        missedOrders = 0;
+        UpdateScoreUI();
     }
 
     private void UpdateScoreUI()
