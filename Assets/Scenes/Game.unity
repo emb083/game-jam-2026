@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: customerSpawnDelay
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9196861021285174758, guid: 60b9dae4689415c4bb73cd1727d1e50a, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f1b26335b829a44e83067d289afd399, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -24,11 +24,11 @@ public class GameBehavior : MonoBehaviour
 
     [Header("Switching")]
     public float switchCooldownDuration = 2f;
-    private float switchCooldownTimer = 0f;
+    public float switchCooldownTimer = 0f;
 
     [Header("Lockout")]
     public float lockDuration = 60f; // 1 minute
-    private float lockTimer = 0f;
+    public float lockTimer = 0f;
 
     [Header("Movement")]
     public float depressionSpeed = 1.2f;
@@ -167,12 +167,16 @@ public class GameBehavior : MonoBehaviour
     }
 
     private void EnterState(MindState state) {
+        Transform musicManager = this.gameObject.transform.Find("BackgroundMusic");
+        AudioSource musicData = musicManager.GetComponent<AudioSource>();
+
         switch(state) {
             case MindState.REALITY:
                 switchCooldownTimer = switchCooldownDuration;
                 // get animator from customer, set boolean to switch
                 // switch post-proc
                 PlayerControls.Instance.movementSpeed = 2.2f;
+                musicData.pitch = 1f;
                 break;
 
             case MindState.IMAGINATION:
@@ -180,18 +184,23 @@ public class GameBehavior : MonoBehaviour
                 // get animator from customer, set boolean to switch
                 // switch post-proc
                 PlayerControls.Instance.movementSpeed = 4f;
+                musicData.pitch = 2f;
                 break;
 
             case MindState.DEPRESSED:
                 lockTimer = lockDuration;
+                print("Locktimer reset");
                 // switch post-proc
                 PlayerControls.Instance.movementSpeed = 1.2f;
+                musicData.pitch = 0.5f;
                 break;
 
             case MindState.INSANE:
                 lockTimer = lockDuration;
+                print("Locktimer reset");
                 // switch post-proc
-                PlayerControls.Instance.movementSpeed = 2.2f;
+                PlayerControls.Instance.movementSpeed = 6f;
+                musicData.pitch = 4f;
                 tempGarble = garbleChance;
                 garbleChance = 1f;
                 break;
@@ -199,8 +208,15 @@ public class GameBehavior : MonoBehaviour
     }
 
     private void ExitState(MindState state) {
+        if (state == MindState.DEPRESSED){
+            boredomBar.value = 0.25f;
+            insanityBar.value = 0.75f;
+        }
         if (state == MindState.INSANE){
+            print("exit insane");
             garbleChance = tempGarble;
+            boredomBar.value = 0.75f;
+            insanityBar.value = 0.25f;
         }
     }
 }

@@ -17,7 +17,7 @@ public class MeterManipulation : MonoBehaviour
         mode = GameBehavior.Instance.currentState;
         float change = Speed * Time.deltaTime;
 
-        if (mode == GameBehavior.MindState.REALITY || mode == GameBehavior.MindState.DEPRESSED) {
+        if (mode == GameBehavior.MindState.REALITY) {
             if (BoredomBar.value < BoredomBar.maxValue){
                 BoredomBar.value += change;
                 InsanityMeter.value -= change;
@@ -26,7 +26,7 @@ public class MeterManipulation : MonoBehaviour
                 GameBehavior.Instance.ChangeState(GameBehavior.MindState.DEPRESSED);
             }
         }
-        else {
+        else if (mode == GameBehavior.MindState.IMAGINATION) {
             if (InsanityMeter.value < InsanityMeter.maxValue) {
                 InsanityMeter.value += change;
                 BoredomBar.value -= change;
@@ -35,6 +35,7 @@ public class MeterManipulation : MonoBehaviour
                 GameBehavior.Instance.ChangeState(GameBehavior.MindState.INSANE);
             }
         }
+
         BoredomBar.value = Mathf.Clamp(BoredomBar.value, BoredomBar.minValue, BoredomBar.maxValue);
         InsanityMeter.value = Mathf.Clamp(InsanityMeter.value, InsanityMeter.minValue, InsanityMeter.maxValue);
 
