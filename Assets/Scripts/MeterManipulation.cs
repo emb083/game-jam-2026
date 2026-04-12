@@ -40,17 +40,5 @@ public class MeterManipulation : MonoBehaviour
         InsanityMeter.value = Mathf.Clamp(InsanityMeter.value, InsanityMeter.minValue, InsanityMeter.maxValue);
 
     }
-
-    private void Depression(){
-        // change visual
-        // change walking speed
-        PlayerControls.Instance.movementSpeed = 1.2f;
-    }
-
-    private void Insanity(){
-        // change visuals
-        // change garble %
-        PlayerControls.Instance.movementSpeed = 6f;
-    }
 }
 
