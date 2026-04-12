@@ -226,9 +226,9 @@ public class GameBehavior : MonoBehaviour
     }
 
     private void SwapCustomers(MindState state){
-        GameObject[] customers = GameObject.FindGameObjectsWithTag("Customer");
-        foreach (GameObject c in customers){
-           c.GetComponent<Customer>().SwapSprite(state);
-        }
+        // GameObject[] customers = GameObject.FindGameObjectsWithTag("Customer");
+        // foreach (GameObject c in customers){
+        //    c.GetComponent<Customer>().SwapSprite(state);
+        // }
     }
 }

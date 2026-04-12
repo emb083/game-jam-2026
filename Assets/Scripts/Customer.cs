@@ -188,4 +188,14 @@ public class Customer : MonoBehaviour {
         targetSpot = despawn;
         prescBubble.SetActive(false);
     }
+
+    public void SwapSprite(GameBehavior.MindState state){
+        // customerAnimator.SetTrigger("ChangeMode");
+        // if (state == GameBehavior.MindState.REALITY){
+        //     customerAnimator.SetBool("Alien", false);
+        // }
+        // else if (state == GameBehavior.MindState.IMAGINATION){
+        //     customerAnimator.SetBool("Alien", true);
+        // }
+    }
 }
