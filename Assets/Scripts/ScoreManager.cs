@@ -26,6 +26,8 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreUI();
     }
 
+    private void Update() => UpdateScoreUI();
+
     public void AddSuccessfulOrderPoints(float timeLeft)
     {
         int points = 100 + Mathf.Max(0, Mathf.FloorToInt(timeLeft));

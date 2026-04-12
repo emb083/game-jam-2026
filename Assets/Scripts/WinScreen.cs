@@ -13,7 +13,22 @@ public class WinScreen : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public void Start()
+    public static WinScreen Instance { get; private set; }
+
+    public void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    public void Update()
     {
         if (playAgainButton != null)
         {
@@ -42,6 +57,8 @@ public class WinScreen : MonoBehaviour
             return;
         }
 
+        print(screen.name);
+
         screen.SetActive(false);
     }
     
@@ -55,8 +72,8 @@ public class WinScreen : MonoBehaviour
     // Update is called once per frame
     public void ReturnToMainMenu()
     {
-        HideScreen(winScreen);
-        ShowScreen(mainMenuScreen);
+        winScreen.SetActive(false);
+        mainMenuScreen.SetActive(true);
         Time.timeScale = 0f;
     }
 

@@ -4,12 +4,14 @@ public class PlayerControls : MonoBehaviour {
     // set in inspector
     public float movementSpeed = 5f;
     public GameObject pauseMenu;
+    public float time;
 
     // set in script
     private PlayerActions inputActions;
     private GameObject interactable;
     private GameObject holding;
     private Animator PlayerAnimator;
+    private SoundManager soundManager;
     GameBehavior Game;
 
     public static PlayerControls Instance {get; private set;}
@@ -185,9 +187,10 @@ public class PlayerControls : MonoBehaviour {
         else {
             if (customerData.prescription == holding) {
                 SoundManager.Play(SoundType.ORDER_RIGHT);
-                // increment score
+                ScoreManager.Instance.AddSuccessfulOrderPoints(time);
             } else {
                 SoundManager.Play(SoundType.ORDER_WRONG);
+                ScoreManager.Instance.AddWrongOrderPenalty();
             }
             customerData.Leave();
             ClearHold();
