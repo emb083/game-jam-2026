@@ -40,9 +40,11 @@ public class Customer : MonoBehaviour {
 
         realityRand = Random.Range(0, realitySpriteOps.Count);
         realitySprite = realitySpriteOps[realityRand];
+        customerAnimator.SetInteger("Sprite", realityRand);
 
         imagineRand = Random.Range(0, imagineSpriteOps.Count);
         imagineSprite = imagineSpriteOps[imagineRand];
+        customerAnimator.SetInteger("Sprite2", imagineRand);
 
         if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED){
             renderer.sprite = realitySprite;
