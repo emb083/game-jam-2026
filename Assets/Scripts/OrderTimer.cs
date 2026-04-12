@@ -16,6 +16,7 @@ public class OrderTimer : MonoBehaviour
     public Image fillImage;
     public Gradient colorGradient;
     private Slider RadialSlider;
+    private Animation TimerAnim;
 
     public static OrderTimer Instance {get; private set;}
 
@@ -30,6 +31,8 @@ public class OrderTimer : MonoBehaviour
 
         RadialSlider = GetComponent<Slider>();
         RadialSlider.value = 0.99f;
+
+        TimerAnim = GetComponent<Animation>();
 
         UpdateTimerDisplay();
     }
@@ -66,6 +69,7 @@ public class OrderTimer : MonoBehaviour
     public void StopTimer() {
         // Stops timer without reseting remaining time
         timerRunning = false;
+        TimerAnim.Stop();
     }
 
     public void ResetTimer() {
@@ -90,6 +94,7 @@ public class OrderTimer : MonoBehaviour
     }
 
     private void UpdateTimerDisplay() {
+        TimerAnim.Play("StopwatchHHamds");
         // Update color based on the current fill amount (0 to 1)
         fillImage.color = colorGradient.Evaluate(fillImage.fillAmount);
 

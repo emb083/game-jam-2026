@@ -322,8 +322,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6802120987133345330}
   - component: {fileID: 2910036551048790242}
-  - component: {fileID: 4374855759137576848}
   - component: {fileID: 2560705809811734882}
+  - component: {fileID: 359469631518257273}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -405,28 +405,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &4374855759137576848
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3081848096886607842}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 291526343f4643a46be43d188492c427, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2560705809811734882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,17 +424,17 @@ MonoBehaviour:
   fillImage: {fileID: 2051083960568215899}
   colorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.509434, g: 0.13000038, b: 0.025952255, a: 1}
+    key1: {r: 0.91525424, g: 1, b: 0, a: 1}
+    key2: {r: 0.032488383, g: 0.4415095, b: 0.12655066, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 65535
-    ctime2: 0
+    ctime1: 34001
+    ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -472,8 +450,24 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
-    m_NumColorKeys: 2
+    m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+--- !u!111 &359469631518257273
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3081848096886607842}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &3524294473544661344
 GameObject:
   m_ObjectHideFlags: 0
