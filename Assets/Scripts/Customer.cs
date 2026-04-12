@@ -55,11 +55,9 @@ public class Customer : MonoBehaviour {
 
     void Update(){
         if (targetSpot == despawn) {
-            print("target");
             this.transform.Translate(Vector3.left * customerSpeed * Time.deltaTime);
         }
         else if (currentSpot != targetSpot){
-            print("else");
             this.transform.position = Vector3.MoveTowards(transform.position, targetSpot.transform.position, (customerSpeed * Time.deltaTime));
         }
 
@@ -78,7 +76,6 @@ public class Customer : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D c){
         
         if (c.CompareTag("Despawn")) {
-            print("Destroy");
             Destroy(gameObject);
         }
         else if (c.CompareTag("LineSpot")) {
