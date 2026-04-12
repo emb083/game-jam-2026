@@ -88,6 +88,7 @@ public class GameBehavior : MonoBehaviour
     void SpawnCustomer()
     {
         Instantiate(customerPrefab, customerSpawn.bounds.center, Quaternion.identity);
+        SoundManager.Play(SoundType.CUSTOMER_ENTER);
     }
 
     public bool CheckGarble(){

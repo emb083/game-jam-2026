@@ -59,8 +59,16 @@ public class PlayerControls : MonoBehaviour {
 
         if (input.Interact.IsPressed()){
             if (interactable != null){
+                GameBehavior Game = GameBehavior.Instance;
                 if (interactable.tag == "orderSpot"){
-                    // interact with customer
+                    if (holding == null){
+                        if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED){
+                            SoundManager.Play(SoundType.NO_ITEM_ALIEN);
+                        }
+                        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED){
+                            SoundManager.Play(SoundType.NO_ITEM_HUMAN);
+                        }
+                    }
                 }
                 else if (interactable.tag == "Med"){
                     GameObject heldObj = this.transform.Find("Held").gameObject;
@@ -70,6 +78,8 @@ public class PlayerControls : MonoBehaviour {
                     heldObj.GetComponent<SpriteRenderer>().sprite = grabbedSprite;
 
                     holding = interactable;
+
+                    SoundManager.Play(SoundType.GRAB);
                 }
             }
         }

@@ -78,80 +78,50 @@ public class Customer : MonoBehaviour {
         }
     }
 
-    private void DisplayPresc()
-    {
-        if (Game == null)
-        {
+    private void DisplayPresc() {
+        if (Game == null) {
             Debug.LogError("Game is null on " + gameObject.name);
             return;
         }
 
-        if (prescription == null)
-        {
+        if (prescription == null) {
             Debug.LogError("Prescription is null on " + gameObject.name);
             return;
         }
 
         Medication med = prescription.GetComponent<Medication>();
-        if (med == null)
-        {
+        if (med == null) {
             Debug.LogError("Prescription has no Medication component on " + gameObject.name);
             return;
         }
 
         string displayText = "";
 
-        if (Game.currentState == GameBehavior.MindState.IMAGINATION ||
-            Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED)
-        {
+        if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED) {
             displayText = med.imagineName;
 
             bool garble = Game.CheckGarble();
-            if (garble)
-            {
+            if (garble) {
                 displayText = Garble(displayText);
             }
         }
-        else if (Game.currentState == GameBehavior.MindState.REALITY ||
-                 Game.currentState == GameBehavior.MindState.REALITY_LOCKED)
-        {
+
+        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED) {
             displayText = med.realName;
         }
 
-<<<<<<< Updated upstream
         // display prescription in speech bubble
-=======
->>>>>>> Stashed changes
-        if (prescriptionBubble != null)
-        {
+        if (prescriptionBubble != null) {
             prescriptionBubble.SetActive(true);
         }
-<<<<<<< Updated upstream
-=======
-        else
-        {
-            Debug.LogError("prescriptionBubble is null on " + gameObject.name);
-            return;
-        }
->>>>>>> Stashed changes
 
-        if (prescriptionText == null)
-        {
+        if (prescriptionText == null) {
             prescriptionText = prescriptionBubble.GetComponentInChildren<TMP_Text>();
         }
-<<<<<<< Updated upstream
-=======
-
-        if (prescriptionText == null)
-        {
-            Debug.LogError("No TMP_Text found inside prescriptionBubble on " + gameObject.name);
-            return;
-        }
-
->>>>>>> Stashed changes
         prescriptionText.text = displayText;
 
         print($"Prescription: {displayText}");
+        SoundManager.Play(SoundType.CUSTOMER_ORDER);
     }
 
 
