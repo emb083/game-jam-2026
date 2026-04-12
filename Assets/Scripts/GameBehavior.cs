@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 
 public class GameBehavior : MonoBehaviour
 {
-    public static GameBehavior Instance {get; private set;}
 
     public enum MindState{
         REALITY,
