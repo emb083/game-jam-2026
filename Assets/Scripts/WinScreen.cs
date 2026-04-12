@@ -58,4 +58,9 @@ public class WinScreen : MonoBehaviour
         ShowScreen(mainMenuScreen);
          Time.timeScale = 1f;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

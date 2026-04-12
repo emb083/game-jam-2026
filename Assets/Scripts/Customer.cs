@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class Customer : MonoBehaviour {
     public float customerSpeed = 1f;
@@ -16,6 +17,9 @@ public class Customer : MonoBehaviour {
     private List<GameObject> waitSpots = null;
     private GameObject targetSpot = null;
     private bool prescDisplayed;
+    private GameObject prescriptionBubble;
+    private TMP_Text prescriptionText;
+
 
     void Start(){
         // setting initial vars
@@ -23,6 +27,7 @@ public class Customer : MonoBehaviour {
         targetSpot = waitSpots[(waitSpots.Count - 1)];
         Game = GameBehavior.Instance;
         prescDisplayed = false;
+         
 
         // setting randomized sprites
         SpriteRenderer renderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
@@ -88,6 +93,17 @@ public class Customer : MonoBehaviour {
         }
 
         // display prescription in speech bubble
+        if (prescriptionBubble != null)
+        {
+            prescriptionBubble.SetActive(true);
+        }
+
+        if (prescriptionText == null)
+        {
+            prescriptionText = prescriptionBubble.GetComponentInChildren<TMP_Text>();
+        }
+        prescriptionText.text = displayText;
+
         print($"Prescription: {displayText}");
     }
 
