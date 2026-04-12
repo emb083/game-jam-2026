@@ -18,8 +18,6 @@ public class Medication : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(){
-        print("Hitbox entered");
-
         string displayText = "";
 
         if (Game.currentState == GameBehavior.MindState.IMAGINATION) {

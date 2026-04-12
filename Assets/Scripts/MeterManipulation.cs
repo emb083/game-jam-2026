@@ -21,7 +21,6 @@ public class MeterManipulation : MonoBehaviour
             {
                 BoredomBar.value += change;
                 InsanityMeter.value -= change;
-                print(BoredomBar.value.ToString());
             }
             else
             {

@@ -360,7 +360,7 @@ MonoBehaviour:
   imagineSpriteOps:
   - {fileID: 7482667652216324306, guid: b76b75aa46cace14c8a9e55dfddb6c6c, type: 3}
   - {fileID: 3625043607559282579, guid: e30f14b477d29e84d94ca1a8e6cc8d53, type: 3}
-  currentSpot: {fileID: 0}
+  prescription: {fileID: 0}
 --- !u!61 &6383380144681931184
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ TagManager:
   - Customer
   - LineSpot
   - orderSpot
+  - Despawn
   layers:
   - Default
   - TransparentFX

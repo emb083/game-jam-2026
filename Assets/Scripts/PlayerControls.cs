@@ -60,27 +60,14 @@ public class PlayerControls : MonoBehaviour {
 
         if (input.Interact.IsPressed()){
             if (interactable != null){
-                GameBehavior Game = GameBehavior.Instance;
                 if (interactable.tag == "orderSpot"){
-                    if (holding == null){
-                        if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED){
-                            SoundManager.Play(SoundType.NO_ITEM_ALIEN);
-                        }
-                        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED){
-                            SoundManager.Play(SoundType.NO_ITEM_HUMAN);
-                        }
-                    }
+                    GameObject currentCustomer = interactable.GetComponent<CustomerDetection>().CustomerAtCounter();
+                    if (currentCustomer != null){
+                        CustomerInteract(currentCustomer);
+                    }  
                 }
                 else if (interactable.tag == "Med"){
-                    GameObject heldObj = this.transform.Find("Held").gameObject;
-                    heldObj.SetActive(true);
-                    GameObject grabbedMed = interactable.transform.parent.gameObject;
-                    Sprite grabbedSprite = grabbedMed.GetComponent<SpriteRenderer>().sprite;
-                    heldObj.GetComponent<SpriteRenderer>().sprite = grabbedSprite;
-
-                    holding = interactable;
-
-                    SoundManager.Play(SoundType.GRAB);
+                    GrabMed();
                 }
             }
         }
@@ -94,7 +81,6 @@ public class PlayerControls : MonoBehaviour {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
         }
-            
     }
 
     private void OnTriggerEnter2D (Collider2D c){
@@ -103,5 +89,42 @@ public class PlayerControls : MonoBehaviour {
 
     private void OnTriggerExit2D (){
         interactable = null;
+    }
+
+    private void GrabMed(){
+        GameObject heldObj = this.transform.Find("Held").gameObject;
+        heldObj.SetActive(true);
+        GameObject grabbedMed = interactable.transform.parent.gameObject;
+        Sprite grabbedSprite = grabbedMed.GetComponent<SpriteRenderer>().sprite;
+        heldObj.GetComponent<SpriteRenderer>().sprite = grabbedSprite;
+
+        holding = interactable;
+
+        SoundManager.Play(SoundType.GRAB);
+    }
+
+    private void CustomerInteract(GameObject customer){
+        GameBehavior Game = GameBehavior.Instance;
+        Customer customerData = customer.GetComponent<Customer>();
+
+        if (holding == null){
+            if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED){
+                SoundManager.Play(SoundType.NO_ITEM_ALIEN);
+            }
+            else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED){
+                SoundManager.Play(SoundType.NO_ITEM_HUMAN);
+            }
+        }
+
+        else if (customerData.prescription == holding) {
+            SoundManager.Play(SoundType.ORDER_RIGHT);
+            // increment score
+            customerData.Leave();
+        }
+
+        else {
+            SoundManager.Play(SoundType.ORDER_WRONG);
+            customerData.Leave();
+        }
     }
 }

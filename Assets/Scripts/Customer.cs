@@ -8,17 +8,18 @@ public class Customer : MonoBehaviour {
     public float customerSpeed = 1f;
     public List<Sprite> realitySpriteOps = null;
     public List<Sprite> imagineSpriteOps = null;
-    public GameObject currentSpot = null;
+    [HideInInspector] public GameObject prescription;
 
     private Sprite realitySprite;
     private Sprite imagineSprite;
     private GameBehavior Game;
-    private GameObject prescription;
     private List<GameObject> waitSpots = null;
     private GameObject targetSpot = null;
+    private GameObject currentSpot = null;
     private bool prescDisplayed;
     private GameObject prescBubble;
     private TMP_Text prescText;
+    private GameObject despawn;
 
 
     void Start(){
@@ -28,6 +29,7 @@ public class Customer : MonoBehaviour {
         Game = GameBehavior.Instance;
         prescDisplayed = false;
         prescBubble = this.transform.Find("PrescBubble").gameObject;
+        despawn = GameObject.FindWithTag("Despawn");
 
         // setting randomized sprites
         SpriteRenderer renderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
@@ -76,6 +78,9 @@ public class Customer : MonoBehaviour {
                 DisplayPresc();
             }
         }
+        else if (c.CompareTag("Despawn")) {
+            Destroy(this);
+        }
     }
 
     private void DisplayPresc() {
@@ -103,7 +108,6 @@ public class Customer : MonoBehaviour {
         SoundManager.Play(SoundType.CUSTOMER_ORDER);
     }
 
-
     private string Garble(string text){
         // convert to char array
         char[] charArray = text.ToCharArray();
@@ -124,5 +128,17 @@ public class Customer : MonoBehaviour {
 
         // return full string from char array
         return new string(charArray);
+    }
+
+    public bool CheckPresc(GameObject held){
+        if (held == prescription){
+            return true;
+        }
+        return false;
+    }
+
+    public void Leave(){
+        targetSpot = despawn;
+        prescBubble.SetActive(false);
     }
 }
