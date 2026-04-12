@@ -6,7 +6,7 @@ public class MeterManipulation : MonoBehaviour
 
     public Slider BoredomBar;
     public Slider InsanityMeter;
-    public float Speed = 0.2f;
+    public float Speed = 0.03f;
     public bool Reality = true;
 
 
@@ -17,17 +17,32 @@ public class MeterManipulation : MonoBehaviour
 
         if (Reality)
         {
-            BoredomBar.value += change;
-            InsanityMeter.value -= change;
+            if (BoredomBar.value < BoredomBar.maxValue)
+            {
+                BoredomBar.value += change;
+                InsanityMeter.value -= change;
+                print(BoredomBar.value.ToString());
+            }
+            else
+            {
+                // Call Depressive Mode
+            }
         }
         else
         {
-            InsanityMeter.value += change;
-            BoredomBar.value -= change;
+            if (InsanityMeter.value < InsanityMeter.maxValue)
+            {
+                InsanityMeter.value += change;
+                BoredomBar.value -= change;
+            }
+            else
+            {
+                // Call Insanity Mode
+            }
         }
-
         BoredomBar.value = Mathf.Clamp(BoredomBar.value, BoredomBar.minValue, BoredomBar.maxValue);
         InsanityMeter.value = Mathf.Clamp(InsanityMeter.value, InsanityMeter.minValue, InsanityMeter.maxValue);
+
     }
 
     public void SetReality()
