@@ -6,33 +6,39 @@ public class MeterManipulation : MonoBehaviour
 
     public Slider BoredomBar;
     public Slider InsanityMeter;
-    public float Speed;
-    public bool Reality;
+    public float Speed = 0.2f;
+    public bool Reality = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        float change = Speed * Time.deltaTime;
+
         if (Reality)
         {
-            BoredomBar.value += Speed;
-            InsanityMeter.value -= Speed;
+            BoredomBar.value += change;
+            InsanityMeter.value -= change;
         }
         else
         {
-            InsanityMeter.value += Speed;
-            BoredomBar.value -= Speed;
+            InsanityMeter.value += change;
+            BoredomBar.value -= change;
         }
+
+        BoredomBar.value = Mathf.Clamp(BoredomBar.value, BoredomBar.minValue, BoredomBar.maxValue);
+        InsanityMeter.value = Mathf.Clamp(InsanityMeter.value, InsanityMeter.minValue, InsanityMeter.maxValue);
     }
 
-    void SetReality()
+    public void SetReality()
     {
         Reality = true;
     }
 
+    public void SetImagination()
+    {
+        Reality = false;
+    }
+
 }
+
