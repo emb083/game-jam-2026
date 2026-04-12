@@ -54,6 +54,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -0.06579896
       objectReference: {fileID: 0}
+    - target: {fileID: 4063042398310971581, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50ce4377216b1bd418cb8ab739e2011f, type: 3}
     - target: {fileID: 4765541366921810268, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -94,6 +98,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8006688205408735720, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8206065571161523669, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
       propertyPath: m_Name
       value: Center Shelf
@@ -103,7 +111,15 @@ PrefabInstance:
       value: -0.06579896
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8006688205408735720, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
+    - {fileID: 4533126688290385613, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
+    - {fileID: 6710940815511794497, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
+    - {fileID: 52779074249265892, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
+    - {fileID: 8518023457943607138, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
+    - {fileID: 5720179273537041787, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
+    - {fileID: 8478217782379602121, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
+    - {fileID: 1090980919115743765, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4872561545972ea4bb70ce23997041a8, type: 3}
@@ -165,7 +181,11 @@ PrefabInstance:
       value: Left Shelf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5798209199229398266, guid: 8fb2dd639e47fa849becd6a6e4613d04, type: 3}
+    - {fileID: 984974915958371274, guid: 8fb2dd639e47fa849becd6a6e4613d04, type: 3}
+    - {fileID: 6137619283832590615, guid: 8fb2dd639e47fa849becd6a6e4613d04, type: 3}
+    - {fileID: 1659732870288312210, guid: 8fb2dd639e47fa849becd6a6e4613d04, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fb2dd639e47fa849becd6a6e4613d04, type: 3}
@@ -227,7 +247,11 @@ PrefabInstance:
       value: Right Shelf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3055175431671616265, guid: 76b99888e2aeeef438ff9dc3ed00125b, type: 3}
+    - {fileID: 2194384455638630975, guid: 76b99888e2aeeef438ff9dc3ed00125b, type: 3}
+    - {fileID: 1337512869581203038, guid: 76b99888e2aeeef438ff9dc3ed00125b, type: 3}
+    - {fileID: 7505054600346327488, guid: 76b99888e2aeeef438ff9dc3ed00125b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76b99888e2aeeef438ff9dc3ed00125b, type: 3}
