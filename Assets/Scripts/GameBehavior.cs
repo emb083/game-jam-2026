@@ -69,7 +69,6 @@ public class GameBehavior : MonoBehaviour
             customerSpawnTimer = 0f;
         }
 
-        print("GB Update updating cooldowns");
         UpdateCoolDowns();
     }
 
@@ -114,7 +113,6 @@ public class GameBehavior : MonoBehaviour
     private void UpdateCoolDowns() {
         if (switchCooldownTimer > 0f) {
             switchCooldownTimer -= Time.deltaTime;
-            print("GB UCD lowering by time.deltatime");
         }
 
         if (lockTimer > 0f) {lockTimer -= Time.deltaTime;}
@@ -181,20 +179,20 @@ public class GameBehavior : MonoBehaviour
         switch(state) {
             case MindState.REALITY:
                 switchCooldownTimer = switchCooldownDuration;
-                print("GB enterstate (reality) setting cooldown to full duration");
                 // get animator from customer, set boolean to switch
                 PostProcManager.Instance.ApplyRealityVFX();
                 PlayerControls.Instance.movementSpeed = 2.2f;
                 musicData.pitch = 1f;
+                //SwapCustomers(state);
                 break;
 
             case MindState.IMAGINATION:
                 switchCooldownTimer = switchCooldownDuration;
-                print("GB enterstate (imagination) setting cooldown to full duration");
                 // get animator from customer, set boolean to switch
                 PostProcManager.Instance.ApplyImagineVFX();
                 PlayerControls.Instance.movementSpeed = 4f;
                 musicData.pitch = 2f;
+                //SwapCustomers(state);
                 break;
 
             case MindState.DEPRESSED:
@@ -224,6 +222,13 @@ public class GameBehavior : MonoBehaviour
             garbleChance = tempGarble;
             boredomBar.value = 0.75f;
             insanityBar.value = 0.25f;
+        }
+    }
+
+    private void SwapCustomers(MindState state){
+        GameObject[] customers = GameObject.FindGameObjectsWithTag("Customer");
+        foreach (GameObject c in customers){
+           c.GetComponent<Customer>().SwapSprite(state);
         }
     }
 }
