@@ -118,29 +118,24 @@ public class Customer : MonoBehaviour {
             displayText = med.realName;
         }
 
-<<<<<<< Updated upstream
+
         // display prescription in speech bubble
-=======
->>>>>>> Stashed changes
+
         if (prescriptionBubble != null)
         {
             prescriptionBubble.SetActive(true);
         }
-<<<<<<< Updated upstream
-=======
+
         else
         {
             Debug.LogError("prescriptionBubble is null on " + gameObject.name);
             return;
         }
->>>>>>> Stashed changes
 
         if (prescriptionText == null)
         {
             prescriptionText = prescriptionBubble.GetComponentInChildren<TMP_Text>();
         }
-<<<<<<< Updated upstream
-=======
 
         if (prescriptionText == null)
         {
@@ -148,7 +143,6 @@ public class Customer : MonoBehaviour {
             return;
         }
 
->>>>>>> Stashed changes
         prescriptionText.text = displayText;
 
         print($"Prescription: {displayText}");
