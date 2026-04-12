@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 3047474486054605168}
   - {fileID: 5214754201814535034}
+  - {fileID: 7777561724337507328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7866721293160298687
@@ -47,22 +48,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MindStateMachine
   currentState: 0
-  boredom: 0
-  insanity: 0
-  boredomIncreaseRate: 15
-  boredomDecreaseRate: 20
-  insanityIncreaseRate: 15
-  insanityDecreaseRate: 20
+  boredomBar: {fileID: 0}
+  insanityBar: {fileID: 0}
   switchCooldownDuration: 2
+  switchCooldownTimer: 0
   lockDuration: 60
-  normalRealitySpeed: 4
-  slowedRealitySpeed: 2
+  lockTimer: 0
+  depressionSpeed: 1.2
+  realitySpeed: 2.2
   imaginationSpeed: 6
-  extremeSlowSpeed: 1
+  insaneSpeed: 6
   customerSpawnDelay: 1
   customerSpawn: {fileID: 0}
   customerPrefab: {fileID: 0}
   garbleChance: 0
+  tempGarble: 0
+  timeGarbleStart: 180
+  ordersMissed: 0
+--- !u!1 &2658365704854515319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7777561724337507328}
+  - component: {fileID: 4850312403161847817}
+  m_Layer: 0
+  m_Name: PostProcManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7777561724337507328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658365704854515319}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.05487001, y: -2.47784, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 325864683633950440}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4850312403161847817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658365704854515319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c64bc70a38849d439ed2857dd6f83ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PostProcManager
+  volume: {fileID: 0}
 --- !u!1001 &2243738659356466350
 PrefabInstance:
   m_ObjectHideFlags: 0

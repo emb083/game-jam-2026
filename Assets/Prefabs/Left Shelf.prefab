@@ -158,6 +158,14 @@ PrefabInstance:
       propertyPath: imagineName
       value: Blobfish
       objectReference: {fileID: 0}
+    - target: {fileID: 3023464122482079186, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023464122482079186, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 3996526794686980132, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -251,6 +259,14 @@ PrefabInstance:
     - target: {fileID: 2745021798231150801, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: imagineName
       value: Dynamite
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023464122482079186, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023464122482079186, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: 3996526794686980132, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: m_Sprite
@@ -346,6 +362,14 @@ PrefabInstance:
       propertyPath: imagineName
       value: Trilobite
       objectReference: {fileID: 0}
+    - target: {fileID: 3023464122482079186, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023464122482079186, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 3996526794686980132, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -439,6 +463,14 @@ PrefabInstance:
     - target: {fileID: 2745021798231150801, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: imagineName
       value: Noses
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023464122482079186, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023464122482079186, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: 4452409811201230324, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: m_LocalPosition.x

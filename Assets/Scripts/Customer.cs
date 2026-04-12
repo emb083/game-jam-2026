@@ -23,6 +23,7 @@ public class Customer : MonoBehaviour {
     private Animator customerAnimator;
     private int realityRand;
     private int imagineRand;
+    private ScoreManager ScoreManager;
 
 
     void Start(){
@@ -89,6 +90,7 @@ public class Customer : MonoBehaviour {
         }
 
         if (OrderTimer.Instance.HasExpired()){
+            ScoreManager.Instance.AddMissedOrderPenalty();
             if (GameBehavior.Instance.currentState == GameBehavior.MindState.IMAGINATION || GameBehavior.Instance.currentState == GameBehavior.MindState.INSANE){
                 SoundManager.Play(SoundType.ORDER_MISSED_ALIEN);
             }
@@ -185,5 +187,15 @@ public class Customer : MonoBehaviour {
         OrderTimer.Instance.StopTimer();
         targetSpot = despawn;
         prescBubble.SetActive(false);
+    }
+
+    public void SwapSprite(GameBehavior.MindState state){
+        // customerAnimator.SetTrigger("ChangeMode");
+        // if (state == GameBehavior.MindState.REALITY){
+        //     customerAnimator.SetBool("Alien", false);
+        // }
+        // else if (state == GameBehavior.MindState.IMAGINATION){
+        //     customerAnimator.SetBool("Alien", true);
+        // }
     }
 }

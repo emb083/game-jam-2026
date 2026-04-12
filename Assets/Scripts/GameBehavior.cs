@@ -28,7 +28,7 @@ public class GameBehavior : MonoBehaviour
 
     [Header("Lockout")]
     public float lockDuration = 60f; // 1 minute
-    public float lockTimer = 0f;
+    private float lockTimer = 0f;
 
     [Header("Movement")]
     public float depressionSpeed = 1.2f;
@@ -111,7 +111,9 @@ public class GameBehavior : MonoBehaviour
     }
 
     private void UpdateCoolDowns() {
-        if (switchCooldownTimer > 0f) {switchCooldownTimer -= Time.deltaTime;}
+        if (switchCooldownTimer > 0f) {
+            switchCooldownTimer -= Time.deltaTime;
+        }
 
         if (lockTimer > 0f) {lockTimer -= Time.deltaTime;}
 
@@ -178,31 +180,31 @@ public class GameBehavior : MonoBehaviour
             case MindState.REALITY:
                 switchCooldownTimer = switchCooldownDuration;
                 // get animator from customer, set boolean to switch
-                // switch post-proc
+                PostProcManager.Instance.ApplyRealityVFX();
                 PlayerControls.Instance.movementSpeed = 2.2f;
                 musicData.pitch = 1f;
+                //SwapCustomers(state);
                 break;
 
             case MindState.IMAGINATION:
                 switchCooldownTimer = switchCooldownDuration;
                 // get animator from customer, set boolean to switch
-                // switch post-proc
+                PostProcManager.Instance.ApplyImagineVFX();
                 PlayerControls.Instance.movementSpeed = 4f;
                 musicData.pitch = 2f;
+                //SwapCustomers(state);
                 break;
 
             case MindState.DEPRESSED:
                 lockTimer = lockDuration;
-                print("Locktimer reset");
-                // switch post-proc
+                PostProcManager.Instance.ApplyDepressionVFX();
                 PlayerControls.Instance.movementSpeed = 1.2f;
                 musicData.pitch = 0.5f;
                 break;
 
             case MindState.INSANE:
                 lockTimer = lockDuration;
-                print("Locktimer reset");
-                // switch post-proc
+                PostProcManager.Instance.ApplyInsanityVFX();
                 PlayerControls.Instance.movementSpeed = 6f;
                 musicData.pitch = 4f;
                 tempGarble = garbleChance;
@@ -217,10 +219,16 @@ public class GameBehavior : MonoBehaviour
             insanityBar.value = 0.75f;
         }
         if (state == MindState.INSANE){
-            print("exit insane");
             garbleChance = tempGarble;
             boredomBar.value = 0.75f;
             insanityBar.value = 0.25f;
         }
+    }
+
+    private void SwapCustomers(MindState state){
+        // GameObject[] customers = GameObject.FindGameObjectsWithTag("Customer");
+        // foreach (GameObject c in customers){
+        //    c.GetComponent<Customer>().SwapSprite(state);
+        // }
     }
 }
