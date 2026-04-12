@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class ScoreManager : MonoBehaviour
     private int missedOrders = 0;
 
     public int Score => score;
+    public int MissedOrders => missedOrders;
 
     private void Awake()
     {
@@ -29,8 +31,6 @@ public class ScoreManager : MonoBehaviour
 
         UpdateScoreUI();
     }
-
-    private void Update() => UpdateScoreUI();
 
     public void AddSuccessfulOrderPoints(float timeLeft)
     {
