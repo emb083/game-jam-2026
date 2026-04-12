@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: mainMenuScreen
       value: 
       objectReference: {fileID: 683020757}
+    - target: {fileID: 6155941734819941694, guid: b5c3569d4aa067546b1a580282cd470a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8385134575430757185, guid: b5c3569d4aa067546b1a580282cd470a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

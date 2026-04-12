@@ -57,6 +57,8 @@ public class TimeManager : MonoBehaviour
     {
         // Can put end of day logic here but not sure what yall wanted to do with it exactly
         Debug.Log("Shift Ended");
+        
+        // Show winScreen
     }
 
     public float GetElapsedTimeSeconds()
