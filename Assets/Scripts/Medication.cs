@@ -23,10 +23,10 @@ public class Medication : MonoBehaviour
         if (Game.currentState == GameBehavior.MindState.IMAGINATION) {
             displayText = imagineName;
         }
-        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED) {
+        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED) {
             displayText = realName;
         }
-        else if (Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED){
+        else if (Game.currentState == GameBehavior.MindState.INSANE){
             displayText = GameBehavior.Instance.Garble(imagineName);
         }
 
