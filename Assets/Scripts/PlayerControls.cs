@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour {
     // set in inspector
     public float movementSpeed = 5f;
+    public GameObject pauseMenu;
 
     // set in script
     private PlayerActions inputActions;
@@ -89,7 +90,8 @@ public class PlayerControls : MonoBehaviour {
         }
 
         if (input.Pause.IsPressed()) {
-            PauseMenu.Instance.OpenPauseMenu();
+            //PauseMenu.Instance.OpenPauseMenu();
+            pauseMenu.SetActive(true);
         }
             
     }

@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class ControlMenu : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup controlsScreen;
-    [SerializeField] private CanvasGroup mainMenuScreen;
-    [SerializeField] private CanvasGroup pauseMenuScreen;
+    [SerializeField] private GameObject controlsScreen;
+    [SerializeField] private GameObject mainMenuScreen;
 
     [Header("Buttons")]
     [SerializeField] private Button backButton;
@@ -20,26 +19,24 @@ public class ControlMenu : MonoBehaviour
         }
     }
 
-    public void ShowScreen(CanvasGroup screen)
+    public void ShowScreen(GameObject screen)
     {
         if (screen == null)
         {
             return;
         }
-        screen.alpha = 1f;
-        screen.interactable = true;
-        screen.blocksRaycasts = true;
+
+        screen.SetActive(true);
     }
 
-    public void HideScreen(CanvasGroup screen)
+    public void HideScreen(GameObject screen)
     {
         if (screen == null)
         {
             return;
         }
-        screen.alpha = 0f;
-        screen.interactable = false;
-        screen.blocksRaycasts = false;
+
+        screen.SetActive(false);
     }
 
     public void Back()

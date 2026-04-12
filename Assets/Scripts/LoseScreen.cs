@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class LoseScreen : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup loseScreen;
-    [SerializeField] private CanvasGroup mainMenuScreen;
+    [SerializeField] private GameObject loseScreen;
+    [SerializeField] private GameObject mainMenuScreen;
 
     [Header("Buttons")]
     [SerializeField] private Button returnToMenuButton;
@@ -28,26 +28,24 @@ public class LoseScreen : MonoBehaviour
     }
 
 
-    public void ShowScreen(CanvasGroup screen)
+    public void ShowScreen(GameObject screen)
     {
         if (screen == null)
         {
             return;
         }
-        screen.alpha = 1f;
-        screen.interactable = true;
-        screen.blocksRaycasts = true;
+
+        screen.SetActive(true);
     }
 
-    public void HideScreen(CanvasGroup screen)
+    public void HideScreen(GameObject screen)
     {
         if (screen == null)
         {
             return;
         }
-        screen.alpha = 0f;
-        screen.interactable = false;
-        screen.blocksRaycasts = false;
+
+        screen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,7 +59,7 @@ public class LoseScreen : MonoBehaviour
     {
         HideScreen(loseScreen);
         ShowScreen(mainMenuScreen);
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
     }
 
     public void QuitGame()

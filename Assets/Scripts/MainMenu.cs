@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [Header("Screens")]
-    [SerializeField] private CanvasGroup mainMenuScreen;
-    [SerializeField] private CanvasGroup controlsScreen;
-    [SerializeField] private CanvasGroup gameplayScreen;
+    [SerializeField] private GameObject mainMenuScreen;
+    [SerializeField] private GameObject controlsScreen;
+    [SerializeField] private GameObject gameplayScreen;
 
     [Header("Buttons")]
     [SerializeField] private Button startButton;
@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
+        Time.timeScale = 0f;
         if (startButton != null)
         {
             startButton.onClick.AddListener(StartGame);
@@ -33,28 +34,24 @@ public class MainMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void ShowScreen(CanvasGroup screen)
+    public void ShowScreen(GameObject screen)
     {
         if (screen == null)
         {
             return;
         }
 
-        screen.alpha = 1f;
-        screen.interactable = true;
-        screen.blocksRaycasts = true;
+        screen.SetActive(true);
     }
 
-    public void HideScreen(CanvasGroup screen)
+    public void HideScreen(GameObject screen)
     {
         if (screen == null)
         {
             return;
         }
 
-        screen.alpha = 0f;
-        screen.interactable = false;
-        screen.blocksRaycasts = false;
+        screen.SetActive(false);
     }
 
     public void StartGame()
@@ -68,7 +65,7 @@ public class MainMenu : MonoBehaviour
     {
         HideScreen(mainMenuScreen);
         ShowScreen(controlsScreen);
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
     }
 
     public void QuitGame()

@@ -6,10 +6,8 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     [Header("Screens")]
-    [SerializeField] private CanvasGroup pauseMenuScreen;
-    [SerializeField] private CanvasGroup controlsScreen;
-    [SerializeField] private CanvasGroup mainMenuScreen;
-    [SerializeField] private CanvasGroup gameplayScreen;
+    [SerializeField] private GameObject pauseMenuScreen;
+    [SerializeField] private GameObject gameplayScreen;
 
     [Header("Buttons")]
     [SerializeField] private Button resumeButton;
@@ -34,26 +32,24 @@ public class PauseMenu : MonoBehaviour
         }
     }
             
-    private void ShowScreen(CanvasGroup screen)
+    private void ShowScreen(GameObject screen)
     {
         if (screen == null)
         {
             return;
         }
-        screen.alpha = 1f;
-        screen.interactable = true;
-        screen.blocksRaycasts = true;
+
+        screen.SetActive(true);
     }
 
-    public void HideScreen(CanvasGroup screen)
+    public void HideScreen(GameObject screen)
     {
         if (screen == null)
         {
             return;
         }
-        screen.alpha = 0f;
-        screen.interactable = false;
-        screen.blocksRaycasts = false;
+
+        screen.SetActive(false);
     } 
 
     public void OpenPauseMenu()
@@ -70,6 +66,7 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenuScreen != null)
         {
             HideScreen(pauseMenuScreen);
+            ShowScreen(gameplayScreen);
             Time.timeScale = 1f;
         }
     }
@@ -79,7 +76,6 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenuScreen != null)
         {
             HideScreen(pauseMenuScreen);
-            ShowScreen(controlsScreen);
             Time.timeScale = 0f;
         }
     }
@@ -90,8 +86,7 @@ public class PauseMenu : MonoBehaviour
         {
             HideScreen(pauseMenuScreen);
             HideScreen(gameplayScreen);
-            ShowScreen(mainMenuScreen);
-            Time.timeScale = 1f;
+            Time.timeScale = 0f;
         }
     }
 }

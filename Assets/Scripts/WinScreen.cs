@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class WinScreen : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup winScreen;
-    [SerializeField] private CanvasGroup mainMenuScreen;
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject mainMenuScreen;
 
     [SerializeField] private Button playAgainButton;
     [SerializeField] private Button mainMenuButton;
@@ -25,29 +25,30 @@ public class WinScreen : MonoBehaviour
         }
     }
 
-    public void ShowScreen(CanvasGroup screen)
+    public void ShowScreen(GameObject screen)
     {
        if (screen = null)
-        {
-           screen.alpha = 1f;
-           screen.interactable = true;
-           screen.blocksRaycasts = true;
-        }
+       {
+            return;
+       }
+
+       screen.SetActive(true);
     }
 
-    public void HideScreen(CanvasGroup screen)
+    public void HideScreen(GameObject screen)
     {
         if (screen = null)
         {
-            screen.alpha = 0f;
-            screen.interactable = false;
-            screen.blocksRaycasts = false;
+            return;
         }
+
+        screen.SetActive(false);
     }
     
 
     public void PlayAgain()
-    {         Time.timeScale = 1f;
+    {         
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -56,7 +57,7 @@ public class WinScreen : MonoBehaviour
     {
         HideScreen(winScreen);
         ShowScreen(mainMenuScreen);
-         Time.timeScale = 1f;
+        Time.timeScale = 0f;
     }
 
     public void QuitGame()

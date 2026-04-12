@@ -878,6 +878,7 @@ GameObject:
   - component: {fileID: 1002384756182521926}
   - component: {fileID: 3302763283087983976}
   - component: {fileID: 5582429533802341204}
+  - component: {fileID: 3409547313492295016}
   m_Layer: 5
   m_Name: Win Screen
   m_TagString: Untagged
@@ -973,6 +974,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3409547313492295016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155365413778123848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960eb04ab1df1634aac52fba99550eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WinScreen
+  winScreen: {fileID: 6155365413778123848}
+  mainMenuScreen: {fileID: 0}
+  playAgainButton: {fileID: 14057461168909542}
+  mainMenuButton: {fileID: 4687733805653168859}
 --- !u!1 &6272863886053621455
 GameObject:
   m_ObjectHideFlags: 0
