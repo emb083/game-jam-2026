@@ -92,6 +92,7 @@ public class PlayerControls : MonoBehaviour {
         if (input.Pause.IsPressed()) {
             //PauseMenu.Instance.OpenPauseMenu();
             pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
         }
             
     }

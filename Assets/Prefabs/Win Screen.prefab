@@ -987,7 +987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WinScreen
   winScreen: {fileID: 6155365413778123848}
-  mainMenuScreen: {fileID: 0}
+  mainMenuScreen: {fileID: 6074966259036604743}
   playAgainButton: {fileID: 14057461168909542}
   mainMenuButton: {fileID: 4687733805653168859}
 --- !u!1 &6272863886053621455

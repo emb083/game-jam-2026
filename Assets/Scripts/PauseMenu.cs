@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     [Header("Screens")]
     [SerializeField] private GameObject pauseMenuScreen;
     [SerializeField] private GameObject gameplayScreen;
+    [SerializeField] private GameObject MainMenuScreen;
 
     [Header("Buttons")]
     [SerializeField] private Button resumeButton;
@@ -86,6 +87,7 @@ public class PauseMenu : MonoBehaviour
         {
             HideScreen(pauseMenuScreen);
             HideScreen(gameplayScreen);
+            ShowScreen(MainMenuScreen);
             Time.timeScale = 0f;
         }
     }
