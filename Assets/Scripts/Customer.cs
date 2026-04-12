@@ -40,10 +40,10 @@ public class Customer : MonoBehaviour {
         int imagineRand = Random.Range(0, imagineSpriteOps.Count);
         imagineSprite = imagineSpriteOps[imagineRand];
 
-        if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED){
+        if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED){
             renderer.sprite = realitySprite;
         }
-        else if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED){
+        else if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.INSANE){
             renderer.sprite = imagineSprite;
         }
 
@@ -91,7 +91,7 @@ public class Customer : MonoBehaviour {
         Medication med = prescription.GetComponent<Medication>();
         string displayText = "";
 
-        if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED) {
+        if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.INSANE) {
             displayText = med.imagineName;
 
             bool garble = Game.CheckGarble();
@@ -99,7 +99,7 @@ public class Customer : MonoBehaviour {
                 displayText = Game.Garble(displayText);
             }
         }
-        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED) {
+        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED) {
             displayText = med.realName;
         }
 

@@ -1151,7 +1151,7 @@ MonoBehaviour:
   BoredomBar: {fileID: 7703211017460339464}
   InsanityMeter: {fileID: 7056812374996214624}
   Speed: 0.01
-  Reality: 1
+  mode: 0
 --- !u!1 &7351474539385419674
 GameObject:
   m_ObjectHideFlags: 0

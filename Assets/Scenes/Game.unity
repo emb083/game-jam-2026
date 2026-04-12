@@ -172,6 +172,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7866721293160298687, guid: 60b9dae4689415c4bb73cd1727d1e50a, type: 3}
+      propertyPath: boredomBar
+      value: 
+      objectReference: {fileID: 682852924}
+    - target: {fileID: 7866721293160298687, guid: 60b9dae4689415c4bb73cd1727d1e50a, type: 3}
+      propertyPath: insanityBar
+      value: 
+      objectReference: {fileID: 1150342393}
+    - target: {fileID: 7866721293160298687, guid: 60b9dae4689415c4bb73cd1727d1e50a, type: 3}
       propertyPath: currentState
       value: 0
       objectReference: {fileID: 0}
@@ -929,6 +937,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5711474981794200616, guid: bad9e9a005ff5c04fbc1dce622399738, type: 3}
   m_PrefabInstance: {fileID: 681433009}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &682852924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7703211017460339464, guid: d289b8e3900e13c429cb1da57a9d5f47, type: 3}
+  m_PrefabInstance: {fileID: 845473608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &683020757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5444085218382375479, guid: 23185cc8fb3e2ec428f672a9aba8f413, type: 3}
@@ -1664,6 +1683,17 @@ MonoBehaviour:
   startButton: {fileID: 1426501657}
   controlsButton: {fileID: 340577307}
   quitButton: {fileID: 1900497107}
+--- !u!114 &1150342393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7056812374996214624, guid: d289b8e3900e13c429cb1da57a9d5f47, type: 3}
+  m_PrefabInstance: {fileID: 845473608}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &1162082297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6155365413778123848, guid: ec95a97870b9f8e438e02128aff91a19, type: 3}

@@ -10,6 +10,13 @@ public class PlayerControls : MonoBehaviour {
     private GameObject interactable;
     private GameObject holding;
     private Animator PlayerAnimator;
+    GameBehavior Game;
+
+    public static PlayerControls Instance {get; private set;}
+
+    private void Awake(){
+        Instance = this;
+    }
 
     private void Start() {
         inputActions = new ();
@@ -20,6 +27,7 @@ public class PlayerControls : MonoBehaviour {
         holding = null;
 
         PlayerAnimator = GetComponent<Animator>();
+        Game = GameBehavior.Instance;
     }
 
     private void Update() {
@@ -112,7 +120,7 @@ public class PlayerControls : MonoBehaviour {
         }
 
         if (input.Swap.IsPressed()){
-            // swap
+            Game.HandleManualSwitchInput();
         }
 
         if (input.Pause.IsPressed()) {
@@ -152,14 +160,13 @@ public class PlayerControls : MonoBehaviour {
     }
 
     private void CustomerInteract(GameObject customer){
-        GameBehavior Game = GameBehavior.Instance;
         Customer customerData = customer.GetComponent<Customer>();
 
         if (holding == null){
-            if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED){
+            if (Game.currentState == GameBehavior.MindState.IMAGINATION || Game.currentState == GameBehavior.MindState.INSANE){
                 SoundManager.Play(SoundType.NO_ITEM_ALIEN);
             }
-            else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED){
+            else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED){
                 SoundManager.Play(SoundType.NO_ITEM_HUMAN);
             }
         }
