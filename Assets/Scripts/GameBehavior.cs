@@ -47,6 +47,9 @@ public class GameBehavior : MonoBehaviour
     [Range(0f, 1f)] public float tempGarble = 0f;
     public float timeGarbleStart = 180f;
 
+    [Header("Order Timer")]
+    public int ordersMissed = 0;
+
     private void Awake() {
         Instance = this;
     }    

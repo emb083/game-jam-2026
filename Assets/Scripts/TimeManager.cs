@@ -20,10 +20,8 @@ public class TimeManager : MonoBehaviour
 
     private int totalGameHours;
 
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
+    private void Awake() {
+        if (Instance != null && Instance != this) {
             Destroy(gameObject);
             return;
         }
@@ -32,19 +30,14 @@ public class TimeManager : MonoBehaviour
         totalGameHours = endHour - startHour;
     }
 
-    private void Update()
-    {
+    private void Update() {
         // if timer is paused or shift ended, do nothing
-        if (!timerRunning || shiftEnded)
-        {
-            return;
-        }
+        if (!timerRunning || shiftEnded) {return;}
 
         elapsedTimeSeconds += Time.deltaTime;
 
         // check if end of shift has been reached
-        if (elapsedTimeSeconds >= shiftLengthSeconds)
-        {
+        if (elapsedTimeSeconds >= shiftLengthSeconds) {
             elapsedTimeSeconds = shiftLengthSeconds;
             shiftEnded = true;
             timerRunning = false;
@@ -53,37 +46,27 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    private void OnShiftEnded()
-    {
+    private void OnShiftEnded() {
         // Can put end of day logic here but not sure what yall wanted to do with it exactly
         Debug.Log("Shift Ended");
         
         // Show winScreen
     }
 
-    public float GetElapsedTimeSeconds()
-    {
-        return elapsedTimeSeconds;
-    }
-
     // how many real seconds left in shift
-    public float GetRemainingTimeSeconds() 
-    {
+    public float GetRemainingTimeSeconds() {
         return shiftLengthSeconds - elapsedTimeSeconds;
     }
 
     // shows progress through the shift as value from 0 to 1
-    public float GetShiftProgress01()
-    {
-        if (shiftLengthSeconds <= 0f)
-            return 1f;
+    public float GetShiftProgress01() {
+        if (shiftLengthSeconds <= 0f) {return 1f;}
 
         return Mathf.Clamp01(elapsedTimeSeconds / shiftLengthSeconds);
     }
 
     // shows the current in-game hour in 24 hour format
-    public int GetCurrentHour24()
-    {
+    public int GetCurrentHour24() {
         float progress = GetShiftProgress01();
         // converts progress into time between startHour and endHour
         float currentGameHourFloat = startHour + (progress * totalGameHours);
@@ -96,8 +79,7 @@ public class TimeManager : MonoBehaviour
     }
 
     // shows current in-game minute
-    public int GetCurrentMinute()
-    {
+    public int GetCurrentMinute() {
         float progress = GetShiftProgress01();
         float currentGameHourFloat = startHour + (progress * totalGameHours);
 
@@ -109,70 +91,29 @@ public class TimeManager : MonoBehaviour
     }
 
     // shows formatted time 
-    public string GetFormattedTime12Hour()
-    {
+    public string GetFormattedTime12Hour() {
         int hour24 = GetCurrentHour24();
         int minute = GetCurrentMinute();
 
         string amPm = hour24 >= 12 ? "PM" : "AM";
         int hour12 = hour24 % 12;
 
-        if (hour12 == 0)
-        {
-            hour12 = 12;
-        }
+        if (hour12 == 0) {hour12 = 12;}
 
         return $"{hour12:00}:{minute:00} {amPm}";
     }
 
-    public bool IsPastNoon()
-    {
-        return elapsedTimeSeconds >= 180f;
-    }
-
-    // shows in game minutes that have passed since noon
-    public int GetHoursPassedSinceNoon()
-    {
-        if (!IsPastNoon())
-            return 0;
-
-        float secondsPastNoon = elapsedTimeSeconds - 180f;
-        return Mathf.FloorToInt(secondsPastNoon / 60f) + 1;
-    }
-
-    // returns garble chance from 0 to 1
-    public float GetOrderGarbleChance()
-    {
-        // 0% until noon or 3 real minutes of gameplay
-        if (!IsPastNoon())
-            return 0f;
-
-        // Increase by 15% each game hour after noon
-        float chance = GetHoursPassedSinceNoon() * 0.15f;
-        return Mathf.Clamp01(chance);
-    }
-
-    public bool HasShiftEnded()
-    {
-        return shiftEnded;
-    }
-
     // pause timer logic
-    public void PauseTimer()
-    {
-        timerRunning = false;
-    }
+    public void PauseTimer() {timerRunning = false;}
 
     // unpaused timer logic
-    public void ResumeTimer()
-    {
+    public void ResumeTimer() {
         if (!shiftEnded)
             timerRunning = true;
     }
 
     // resets timer back to start of shift 
-    public void ResetTimer()
-    {
+    public void ResetTimer() {
         elapsedTimeSeconds = 0f;
         shiftEnded = false;
         timerRunning = true;

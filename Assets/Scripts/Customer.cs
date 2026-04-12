@@ -60,13 +60,17 @@ public class Customer : MonoBehaviour {
     }
 
     void Update(){
+        // if order complete, go to despawn
         if (targetSpot == despawn) {
             this.transform.Translate(Vector3.left * customerSpeed * Time.deltaTime);
         }
+
+        // if not at target spot, move
         else if (currentSpot != targetSpot){
             this.transform.position = Vector3.MoveTowards(transform.position, targetSpot.transform.position, (customerSpeed * Time.deltaTime));
         }
 
+        // if next spot in line available, move
         LineSpot curSpotData = null;
         if (currentSpot != null){
             curSpotData = currentSpot.GetComponent<LineSpot>();
@@ -83,6 +87,16 @@ public class Customer : MonoBehaviour {
                 }
             }
         }
+
+        if (OrderTimer.Instance.HasExpired()){
+            if (GameBehavior.Instance.currentState == GameBehavior.MindState.IMAGINATION || GameBehavior.Instance.currentState == GameBehavior.MindState.INSANE){
+                SoundManager.Play(SoundType.ORDER_MISSED_ALIEN);
+            }
+            else if (GameBehavior.Instance.currentState == GameBehavior.MindState.REALITY || GameBehavior.Instance.currentState == GameBehavior.MindState.DEPRESSED){
+                SoundManager.Play(SoundType.ORDER_MISSED_HUMAN);
+            }
+            Leave();
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D c){
@@ -93,10 +107,12 @@ public class Customer : MonoBehaviour {
         else if (c.CompareTag("LineSpot")) {
             currentSpot = c.gameObject;
             if (currentSpot.GetComponent<LineSpot>().spotNum == 1 && !prescDisplayed){
+                // start order
                 prescDisplayed = true;
                 customerAnimator.SetBool("Walking", false);
                 customerAnimator.SetBool("AtDesk", true);
                 DisplayPresc();
+                OrderTimer.Instance.StartTimer();
             }
         }
     }
@@ -165,6 +181,8 @@ public class Customer : MonoBehaviour {
     }
 
     public void Leave(){
+        OrderTimer.Instance.timerExpired = false;
+        OrderTimer.Instance.StopTimer();
         targetSpot = despawn;
         prescBubble.SetActive(false);
     }
