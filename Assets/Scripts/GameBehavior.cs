@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class GameBehavior : MonoBehaviour
 {
+    public static GameBehavior Instance {get; private set;}
 
     public enum MindState{
         REALITY,
@@ -96,6 +97,28 @@ public class GameBehavior : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public string Garble(string text){
+        // convert to char array
+        char[] charArray = text.ToCharArray();
+
+        // make all lowercase
+        charArray[0] = char.ToLower(charArray[0]);
+
+        // scramble
+        for (int i = 0; i < charArray.Length; i++){
+            char temp = charArray[i];
+            int randomIndex = Random.Range(i, charArray.Length);
+            charArray[i] = charArray[randomIndex];
+            charArray[randomIndex] = temp;
+        }
+
+        // make new first letter uppercase
+        charArray[0] = char.ToUpper(charArray[0]);
+
+        // return full string from char array
+        return new string(charArray);
     }
 
     // private void UpdateCoolDowns()
