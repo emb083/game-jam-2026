@@ -50,10 +50,16 @@ public class Customer : MonoBehaviour {
         // setting randomized prescription
         int prescRand = Random.Range(0, Map.Instance.medications.Count);
         prescription = Map.Instance.medications[prescRand];
+        Rigidbody2D Body = this.GetComponent<Rigidbody2D>();
     }
 
     void Update(){
-        if (currentSpot != targetSpot){
+        if (targetSpot == despawn) {
+            print("target");
+            this.transform.Translate(Vector3.left * customerSpeed * Time.deltaTime);
+        }
+        else if (currentSpot != targetSpot){
+            print("else");
             this.transform.position = Vector3.MoveTowards(transform.position, targetSpot.transform.position, (customerSpeed * Time.deltaTime));
         }
 
@@ -70,16 +76,17 @@ public class Customer : MonoBehaviour {
     }
     
     private void OnTriggerEnter2D(Collider2D c){
-        if (c.CompareTag("LineSpot")) {
+        
+        if (c.CompareTag("Despawn")) {
+            print("Destroy");
+            Destroy(gameObject);
+        }
+        else if (c.CompareTag("LineSpot")) {
             currentSpot = c.gameObject;
-
             if (currentSpot.GetComponent<LineSpot>().spotNum == 1 && !prescDisplayed){
                 prescDisplayed = true;
                 DisplayPresc();
             }
-        }
-        else if (c.CompareTag("Despawn")) {
-            Destroy(this);
         }
     }
 
