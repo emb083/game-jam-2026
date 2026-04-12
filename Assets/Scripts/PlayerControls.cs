@@ -9,6 +9,7 @@ public class PlayerControls : MonoBehaviour {
     private PlayerActions inputActions;
     private GameObject interactable;
     private GameObject holding;
+    private Animator PlayerAnimator;
 
     private void Start() {
         inputActions = new ();
@@ -17,6 +18,8 @@ public class PlayerControls : MonoBehaviour {
 
         interactable = null;
         holding = null;
+
+        PlayerAnimator = GetComponent<Animator>();
     }
 
     private void Update() {
@@ -26,36 +29,72 @@ public class PlayerControls : MonoBehaviour {
 
         if (input.WalkUp.WasReleasedThisFrame()){
             // end animation, go to idle
+
+            PlayerAnimator.SetBool("Up", false);
+            PlayerAnimator.SetBool("Idle", true);
         }
 
         if (input.WalkDown.WasReleasedThisFrame()){
             // end animation, go to idle
+
+            PlayerAnimator.SetBool("Down", false);
+            PlayerAnimator.SetBool("Idle", true);
         }
 
         if (input.WalkLeft.WasReleasedThisFrame()){
             // end animation, go to idle
+
+            PlayerAnimator.SetBool("Left", false);
+            PlayerAnimator.SetBool("Idle", true);
         }
 
         if (input.WalkRight.WasReleasedThisFrame()){
             // end animation, go to idle
+
+            PlayerAnimator.SetBool("Right", false);
+            PlayerAnimator.SetBool("Idle", true);
         }
 
         // on key press
 
         if (input.WalkUp.IsPressed()){
             this.transform.Translate(Vector3.up * movementSpeed * Time.deltaTime);
+
+            foreach (AnimatorControllerParameter parameter in PlayerAnimator.parameters)
+            {
+                PlayerAnimator.SetBool(parameter.name, false);
+            }
+            PlayerAnimator.SetBool("Up", true);
         }
 
         if (input.WalkDown.IsPressed()){
             this.transform.Translate(Vector3.down * movementSpeed * Time.deltaTime);
+
+            foreach (AnimatorControllerParameter parameter in PlayerAnimator.parameters)
+            {
+                PlayerAnimator.SetBool(parameter.name, false);
+            }
+            PlayerAnimator.SetBool("Down", true);
         }
 
         if (input.WalkLeft.IsPressed()){
             this.transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
+
+            foreach (AnimatorControllerParameter parameter in PlayerAnimator.parameters)
+            {
+                PlayerAnimator.SetBool(parameter.name, false);
+            }
+            PlayerAnimator.SetBool("Left", true);
         }
 
         if (input.WalkRight.IsPressed()){
             this.transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
+
+            foreach (AnimatorControllerParameter parameter in PlayerAnimator.parameters)
+            {
+                PlayerAnimator.SetBool(parameter.name, false);
+            }
+            PlayerAnimator.SetBool("Right", true);
         }
 
         if (input.Interact.IsPressed()){
@@ -100,6 +139,7 @@ public class PlayerControls : MonoBehaviour {
 
         holding = interactable;
 
+        PlayerAnimator.SetBool("Holding", true);
         SoundManager.Play(SoundType.GRAB);
     }
 
@@ -108,6 +148,7 @@ public class PlayerControls : MonoBehaviour {
 
         GameObject heldObj = this.transform.Find("Held").gameObject;
         heldObj.SetActive(false);
+        PlayerAnimator.SetBool("Holding", false);
     }
 
     private void CustomerInteract(GameObject customer){
