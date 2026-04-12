@@ -58,7 +58,6 @@ public class GameBehavior : MonoBehaviour
     void Start()
     {
         EnterState(currentState);
-        spriteChange = customerPrefab.GetComponent<Animator>();
     }
 
     void Update()
