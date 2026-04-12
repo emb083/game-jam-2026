@@ -162,6 +162,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 614c83f68eb8edc4286ec4b30b926e7a, type: 3}
+    - target: {fileID: 4452409811201230324, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452409811201230324, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.82
+      objectReference: {fileID: 0}
     - target: {fileID: 6920107353697831281, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: m_Name
       value: Bottle (4)
@@ -248,6 +256,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6d5e0f0a8507c16448df965b34602164, type: 3}
+    - target: {fileID: 4452409811201230324, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452409811201230324, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.82
+      objectReference: {fileID: 0}
     - target: {fileID: 6920107353697831281, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: m_Name
       value: Bottle (3)
@@ -334,6 +350,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: cf62be3caaead1a44b3381a47a3731cb, type: 3}
+    - target: {fileID: 4452409811201230324, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452409811201230324, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.82
+      objectReference: {fileID: 0}
     - target: {fileID: 6920107353697831281, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: m_Name
       value: Bottle (2)
@@ -415,6 +439,14 @@ PrefabInstance:
     - target: {fileID: 2745021798231150801, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: imagineName
       value: Noses
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452409811201230324, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452409811201230324, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.82
       objectReference: {fileID: 0}
     - target: {fileID: 6920107353697831281, guid: 474627333f4ba8f4e91bc12c426ad3fc, type: 3}
       propertyPath: m_Name

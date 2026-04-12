@@ -1,3 +1,5 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Medication : MonoBehaviour
@@ -6,13 +8,36 @@ public class Medication : MonoBehaviour
     public string realName;
     public string imagineName;
 
-    private void OnTriggerEnter2D(Collider2D c) {
-        if (c.CompareTag("Player")) {
-            DisplayTooltip();
-        }
+    // set in script
+    private GameObject tooltip;
+    private GameBehavior Game;
+
+    void Start(){
+        tooltip = transform.parent.transform.Find("Tooltip").gameObject;
+        Game = GameBehavior.Instance;
     }
 
-    public void DisplayTooltip(){
-        print($"Real: {realName}\nImaginary: {imagineName}");
+    private void OnTriggerEnter2D(){
+        print("Hitbox entered");
+
+        string displayText = "";
+
+        if (Game.currentState == GameBehavior.MindState.IMAGINATION) {
+            displayText = imagineName;
+        }
+        else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED) {
+            displayText = realName;
+        }
+        else if (Game.currentState == GameBehavior.MindState.IMAGINATION_LOCKED){
+            displayText = GameBehavior.Instance.Garble(imagineName);
+        }
+
+        TMP_Text tooltipText = tooltip.GetComponentInChildren<TMP_Text>();
+        tooltipText.text = displayText;
+        tooltip.SetActive(true);
+    }
+
+    private void OnTriggerExit2D(){
+        tooltip.SetActive(false);
     }
 }

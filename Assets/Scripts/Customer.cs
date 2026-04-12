@@ -87,7 +87,7 @@ public class Customer : MonoBehaviour {
 
             bool garble = Game.CheckGarble();
             if (garble) {
-                displayText = Garble(displayText);
+                displayText = Game.Garble(displayText);
             }
         }
         else if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.REALITY_LOCKED) {
