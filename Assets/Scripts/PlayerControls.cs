@@ -103,6 +103,13 @@ public class PlayerControls : MonoBehaviour {
         SoundManager.Play(SoundType.GRAB);
     }
 
+    private void ClearHold(){
+        holding = null;
+
+        GameObject heldObj = this.transform.Find("Held").gameObject;
+        heldObj.SetActive(false);
+    }
+
     private void CustomerInteract(GameObject customer){
         GameBehavior Game = GameBehavior.Instance;
         Customer customerData = customer.GetComponent<Customer>();
@@ -115,16 +122,15 @@ public class PlayerControls : MonoBehaviour {
                 SoundManager.Play(SoundType.NO_ITEM_HUMAN);
             }
         }
-
-        else if (customerData.prescription == holding) {
-            SoundManager.Play(SoundType.ORDER_RIGHT);
-            // increment score
-            customerData.Leave();
-        }
-
         else {
-            SoundManager.Play(SoundType.ORDER_WRONG);
+            if (customerData.prescription == holding) {
+                SoundManager.Play(SoundType.ORDER_RIGHT);
+                // increment score
+            } else {
+                SoundManager.Play(SoundType.ORDER_WRONG);
+            }
             customerData.Leave();
+            ClearHold();
         }
     }
 }
