@@ -1,5 +1,5 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -13,8 +13,25 @@ public class LoseScreen : MonoBehaviour
     [SerializeField] private Button retryButton;
     [SerializeField] private Button quitButton;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Start()
+    [Header("Final Score UI")]
+    [SerializeField] private TMP_Text finalScoreText;
+
+    public static LoseScreen Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    private void Start()
     {
         if (retryButton != null)
         {
@@ -25,8 +42,12 @@ public class LoseScreen : MonoBehaviour
         {
             returnToMenuButton.onClick.AddListener(ReturnToMainMenu);
         }
-    }
 
+        if (quitButton != null)
+        {
+            quitButton.onClick.AddListener(QuitGame);
+        }
+    }
 
     public void ShowScreen(GameObject screen)
     {
@@ -48,10 +69,24 @@ public class LoseScreen : MonoBehaviour
         screen.SetActive(false);
     }
 
-    // Update is called once per frame
+    public void ShowLoseScreen()
+    {
+        if (finalScoreText != null && ScoreManager.Instance != null)
+        {
+            finalScoreText.text = $"Final Score: {ScoreManager.Instance.Score}";
+        }
+
+        ShowScreen(loseScreen);
+        Time.timeScale = 0f;
+    }
+
     public void Retry()
     {
         Time.timeScale = 1f;
+
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.ResetScore();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
