@@ -82,8 +82,8 @@ public class Customer : MonoBehaviour {
                 }
                 else if (spotData.occupied && spotData.spotNum == curSpotData.spotNum - 1)
                 {
-                    customerAnimator.SetBool("Walking", true);
-                    customerAnimator.SetBool("AtDesk", false);
+                    customerAnimator.SetBool("Walking", false);
+                    customerAnimator.SetBool("AtDesk", true);
                 }
             }
         }

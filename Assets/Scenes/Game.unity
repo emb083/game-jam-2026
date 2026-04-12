@@ -172,6 +172,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7866721293160298687, guid: 60b9dae4689415c4bb73cd1727d1e50a, type: 3}
+      propertyPath: Door
+      value: 
+      objectReference: {fileID: 128855189}
+    - target: {fileID: 7866721293160298687, guid: 60b9dae4689415c4bb73cd1727d1e50a, type: 3}
       propertyPath: boredomBar
       value: 
       objectReference: {fileID: 682852924}

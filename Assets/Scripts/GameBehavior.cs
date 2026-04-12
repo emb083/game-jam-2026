@@ -25,6 +25,7 @@ public class GameBehavior : MonoBehaviour
     [Header("Switching")]
     public float switchCooldownDuration = 2f;
     private float switchCooldownTimer = 0f;
+    private Animator spriteChange;
 
     [Header("Lockout")]
     public float lockDuration = 60f; // 1 minute
@@ -40,6 +41,7 @@ public class GameBehavior : MonoBehaviour
     public float customerSpawnDelay = 1f;
     public BoxCollider2D customerSpawn;
     public GameObject customerPrefab;
+    public GameObject Door;
     private float customerSpawnTimer = 0f;
 
     [Header("Text Garble")]
@@ -57,12 +59,14 @@ public class GameBehavior : MonoBehaviour
     void Start()
     {
         EnterState(currentState);
+        spriteChange = customerPrefab.GetComponent<Animator>();
     }
 
     void Update()
     {
         customerSpawnTimer += Time.deltaTime;
         if (customerSpawnTimer >= customerSpawnDelay && Map.Instance.waitSpots[Map.Instance.waitSpots.Count - 1].GetComponent<LineSpot>().occupied is false) {
+            Door.GetComponent<Animator>().SetTrigger("OpenDoor");
             SpawnCustomer();
             customerSpawnTimer = 0f;
         }
@@ -74,6 +78,8 @@ public class GameBehavior : MonoBehaviour
     {
         Instantiate(customerPrefab, customerSpawn.bounds.center, Quaternion.identity);
         SoundManager.Play(SoundType.CUSTOMER_ENTER);
+        Door.GetComponent<Animator>().SetTrigger("GoBack");
+
     }
 
     public bool CheckGarble(){
