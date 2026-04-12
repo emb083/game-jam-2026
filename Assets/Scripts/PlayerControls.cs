@@ -70,7 +70,10 @@ public class PlayerControls : MonoBehaviour {
 
             foreach (AnimatorControllerParameter parameter in PlayerAnimator.parameters)
             {
-                PlayerAnimator.SetBool(parameter.name, false);
+                if (parameter.name != "Holding")
+                {
+                    PlayerAnimator.SetBool(parameter.name, false);
+                }
             }
             PlayerAnimator.SetBool("Up", true);
         }
@@ -80,7 +83,10 @@ public class PlayerControls : MonoBehaviour {
 
             foreach (AnimatorControllerParameter parameter in PlayerAnimator.parameters)
             {
-                PlayerAnimator.SetBool(parameter.name, false);
+                if (parameter.name != "Holding")
+                {
+                    PlayerAnimator.SetBool(parameter.name, false);
+                }
             }
             PlayerAnimator.SetBool("Down", true);
         }
@@ -90,7 +96,10 @@ public class PlayerControls : MonoBehaviour {
 
             foreach (AnimatorControllerParameter parameter in PlayerAnimator.parameters)
             {
-                PlayerAnimator.SetBool(parameter.name, false);
+                if (parameter.name != "Holding")
+                {
+                    PlayerAnimator.SetBool(parameter.name, false);
+                }
             }
             PlayerAnimator.SetBool("Left", true);
         }
@@ -100,7 +109,10 @@ public class PlayerControls : MonoBehaviour {
 
             foreach (AnimatorControllerParameter parameter in PlayerAnimator.parameters)
             {
-                PlayerAnimator.SetBool(parameter.name, false);
+                if (parameter.name != "Holding")
+                {
+                    PlayerAnimator.SetBool(parameter.name, false);
+                }
             }
             PlayerAnimator.SetBool("Right", true);
         }

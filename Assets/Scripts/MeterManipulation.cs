@@ -23,6 +23,7 @@ public class MeterManipulation : MonoBehaviour
                 InsanityMeter.value -= change;
             }
             else {
+                //Depression();
                 GameBehavior.Instance.ChangeState(GameBehavior.MindState.DEPRESSED);
             }
         }
@@ -32,6 +33,7 @@ public class MeterManipulation : MonoBehaviour
                 BoredomBar.value -= change;
             }
             else {
+                //Insanity();
                 GameBehavior.Instance.ChangeState(GameBehavior.MindState.INSANE);
             }
         }

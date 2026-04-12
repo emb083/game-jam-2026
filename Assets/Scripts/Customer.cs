@@ -20,6 +20,9 @@ public class Customer : MonoBehaviour {
     private GameObject prescBubble;
     private TMP_Text prescText;
     private GameObject despawn;
+    private Animator customerAnimator;
+    private int realityRand;
+    private int imagineRand;
 
 
     void Start(){
@@ -30,15 +33,18 @@ public class Customer : MonoBehaviour {
         prescDisplayed = false;
         prescBubble = this.transform.Find("PrescBubble").gameObject;
         despawn = GameObject.FindWithTag("Despawn");
+        customerAnimator = this.GetComponent<Animator>();
 
         // setting randomized sprites
         SpriteRenderer renderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
 
-        int realityRand = Random.Range(0, realitySpriteOps.Count);
+        realityRand = Random.Range(0, realitySpriteOps.Count);
         realitySprite = realitySpriteOps[realityRand];
+        customerAnimator.SetInteger("Sprite", realityRand);
 
-        int imagineRand = Random.Range(0, imagineSpriteOps.Count);
+        imagineRand = Random.Range(0, imagineSpriteOps.Count);
         imagineSprite = imagineSpriteOps[imagineRand];
+        customerAnimator.SetInteger("Sprite2", imagineRand);
 
         if (Game.currentState == GameBehavior.MindState.REALITY || Game.currentState == GameBehavior.MindState.DEPRESSED){
             renderer.sprite = realitySprite;
@@ -70,8 +76,14 @@ public class Customer : MonoBehaviour {
             curSpotData = currentSpot.GetComponent<LineSpot>();
             foreach (GameObject spot in waitSpots){
                 LineSpot spotData = spot.GetComponent<LineSpot>();
-                    if (!spotData.occupied && spotData.spotNum == curSpotData.spotNum - 1){
+                if (!spotData.occupied && spotData.spotNum == curSpotData.spotNum - 1)
+                {
                     targetSpot = spot;
+                }
+                else if (spotData.occupied && spotData.spotNum == curSpotData.spotNum - 1)
+                {
+                    customerAnimator.SetBool("Walking", true);
+                    customerAnimator.SetBool("AtDesk", false);
                 }
             }
         }
@@ -97,9 +109,20 @@ public class Customer : MonoBehaviour {
             if (currentSpot.GetComponent<LineSpot>().spotNum == 1 && !prescDisplayed){
                 // start order
                 prescDisplayed = true;
+                customerAnimator.SetBool("Walking", false);
+                customerAnimator.SetBool("AtDesk", true);
                 DisplayPresc();
                 OrderTimer.Instance.StartTimer();
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D c)
+    {
+        if (c.CompareTag("LineSpot"))
+        {
+            customerAnimator.SetBool("Walking", true);
+            customerAnimator.SetBool("AtDesk", false);
         }
     }
 
