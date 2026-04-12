@@ -77,6 +77,9 @@ public class OrderTimer : MonoBehaviour
         currentTime = orderTimeLimit;
         timerRunning = false;
         timerExpired = false;
+        RadialSlider.value = 0.99f;
+
+        TimerAnim.Play();
 
         UpdateTimerDisplay();
     }
@@ -94,7 +97,6 @@ public class OrderTimer : MonoBehaviour
     }
 
     private void UpdateTimerDisplay() {
-        TimerAnim.Play("StopwatchHHamds");
         // Update color based on the current fill amount (0 to 1)
         fillImage.color = colorGradient.Evaluate(fillImage.fillAmount);
 

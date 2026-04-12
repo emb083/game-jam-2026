@@ -56,15 +56,15 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        HideScreen(mainMenuScreen);
-        ShowScreen(gameplayScreen);
+        mainMenuScreen.SetActive(false);
+        gameplayScreen.SetActive(true);
         Time.timeScale = 1f;
     }
 
     public void OpenControls()
     {
-        HideScreen(mainMenuScreen);
-        ShowScreen(controlsScreen);
+        mainMenuScreen.SetActive(false);
+        controlsScreen.SetActive(true);
         Time.timeScale = 0f;
     }
 

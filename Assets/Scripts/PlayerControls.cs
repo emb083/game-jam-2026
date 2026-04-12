@@ -187,7 +187,7 @@ public class PlayerControls : MonoBehaviour {
         else {
             if (customerData.prescription == holding) {
                 SoundManager.Play(SoundType.ORDER_RIGHT);
-                ScoreManager.Instance.AddSuccessfulOrderPoints(time);
+                ScoreManager.Instance.AddSuccessfulOrderPoints(OrderTimer.Instance.GetRemainingTime());
             } else {
                 SoundManager.Play(SoundType.ORDER_WRONG);
                 ScoreManager.Instance.AddWrongOrderPenalty();
