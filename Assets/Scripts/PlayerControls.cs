@@ -166,9 +166,9 @@ public class PlayerControls : MonoBehaviour {
     private void ClearHold(){
         holding = null;
 
+        PlayerAnimator.SetBool("Holding", false);
         GameObject heldObj = this.transform.Find("Held").gameObject;
         heldObj.SetActive(false);
-        PlayerAnimator.SetBool("Holding", false);
     }
 
     private void CustomerInteract(GameObject customer){
