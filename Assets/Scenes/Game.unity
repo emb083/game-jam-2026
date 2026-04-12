@@ -176,10 +176,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7866721293160298687, guid: 60b9dae4689415c4bb73cd1727d1e50a, type: 3}
-      propertyPath: Door
+    - target: {fileID: 4850312403161847817, guid: 60b9dae4689415c4bb73cd1727d1e50a, type: 3}
+      propertyPath: volume
       value: 
-      objectReference: {fileID: 128855189}
+      objectReference: {fileID: 1430477568}
     - target: {fileID: 7866721293160298687, guid: 60b9dae4689415c4bb73cd1727d1e50a, type: 3}
       propertyPath: boredomBar
       value: 
@@ -2330,7 +2330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1951652540609538384, guid: 06a7be93834c0234387a1e694341a3a1, type: 3}
       propertyPath: orthographic size
-      value: 5.5
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 3325808779273524811, guid: 06a7be93834c0234387a1e694341a3a1, type: 3}
       propertyPath: m_RenderPostProcessing

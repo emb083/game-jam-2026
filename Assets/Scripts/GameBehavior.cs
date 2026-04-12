@@ -178,7 +178,7 @@ public class GameBehavior : MonoBehaviour
             case MindState.REALITY:
                 switchCooldownTimer = switchCooldownDuration;
                 // get animator from customer, set boolean to switch
-                // switch post-proc
+                PostProcManager.Instance.ApplyRealityVFX();
                 PlayerControls.Instance.movementSpeed = 2.2f;
                 musicData.pitch = 1f;
                 break;
@@ -186,23 +186,21 @@ public class GameBehavior : MonoBehaviour
             case MindState.IMAGINATION:
                 switchCooldownTimer = switchCooldownDuration;
                 // get animator from customer, set boolean to switch
-                // switch post-proc
+                PostProcManager.Instance.ApplyImagineVFX();
                 PlayerControls.Instance.movementSpeed = 4f;
                 musicData.pitch = 2f;
                 break;
 
             case MindState.DEPRESSED:
                 lockTimer = lockDuration;
-                print("Locktimer reset");
-                // switch post-proc
+                PostProcManager.Instance.ApplyDepressionVFX();
                 PlayerControls.Instance.movementSpeed = 1.2f;
                 musicData.pitch = 0.5f;
                 break;
 
             case MindState.INSANE:
                 lockTimer = lockDuration;
-                print("Locktimer reset");
-                // switch post-proc
+                PostProcManager.Instance.ApplyInsanityVFX();
                 PlayerControls.Instance.movementSpeed = 6f;
                 musicData.pitch = 4f;
                 tempGarble = garbleChance;
@@ -217,7 +215,6 @@ public class GameBehavior : MonoBehaviour
             insanityBar.value = 0.75f;
         }
         if (state == MindState.INSANE){
-            print("exit insane");
             garbleChance = tempGarble;
             boredomBar.value = 0.75f;
             insanityBar.value = 0.25f;
