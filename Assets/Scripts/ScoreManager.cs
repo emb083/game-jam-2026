@@ -8,6 +8,9 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private TMP_Text scoreText;
 
+    public GameObject Hud;
+    public GameObject EndScreen;
+
     private int score = 0;
     private int missedOrders = 0;
 
@@ -47,18 +50,10 @@ public class ScoreManager : MonoBehaviour
     public void AddMissedOrderPenalty()
     {
         missedOrders++;
-        Debug.Log($"Missed order: +0, total score: {score}, missed orders: {missedOrders}");
-
-        if (missedOrders >= 3)
+        if (missedOrders >= 5)
         {
-            if (LoseScreen.Instance != null)
-            {
-                LoseScreen.Instance.ShowLoseScreen();
-            }
-            else
-            {
-                Debug.LogWarning("LoseScreen.Instance is null.");
-            }
+            Hud.SetActive(false);
+            EndScreen.SetActive(true);
         }
     }
 
