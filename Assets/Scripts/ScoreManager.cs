@@ -6,10 +6,10 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
-    public GameObject Hud;
-    public GameObject LoseScreen;
-
     [SerializeField] private TMP_Text scoreText;
+
+    public GameObject Hud;
+    public GameObject EndScreen;
 
     private int score = 0;
     private int missedOrders = 0;
@@ -49,15 +49,19 @@ public class ScoreManager : MonoBehaviour
 
     public void AddMissedOrderPenalty()
     {
-        missedOrders += 1;
-        if (missedOrders > 4)
+        missedOrders++;
+        if (missedOrders >= 5)
         {
             Hud.SetActive(false);
-            LoseScreen.SetActive(true);
-            Time.timeScale = 0f;
+            EndScreen.SetActive(true);
         }
-        // Intentionally does nothing.
-        Debug.Log($"Missed order: +0, total score: {score}");
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+        missedOrders = 0;
+        UpdateScoreUI();
     }
 
     private void UpdateScoreUI()
